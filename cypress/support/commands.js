@@ -1,25 +1,25 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('login', (username, password) => {
+  username ||= Cypress.config().adminEmail
+  password ||= Cypress.config().adminPassword
+
+  cy.visit('/ghost/#/signin')
+  cy.get('input[name="identification"]').type(username)
+  cy.get('input[name="password"]').type(password)
+  cy.get('button.login').click()
+})
+
+Cypress.Commands.add('go_to_create_post_page', () => {
+  cy.get('a[href="#/posts/"]').click({force: true})
+  cy.contains('New post').click({force: true})
+})
+
+Cypress.Commands.add('fill_editor', (editor_data) => {
+  cy.get('textarea.gh-editor-title').type(editor_data.title)
+  //To trigger save data
+  //cy.contains('0 words').click()
+})
+
+Cypress.Commands.add('finish_editing', (resource) => {
+  cy.wait(1000)
+  cy.visit(`/ghost/#/${resource}`)
+})

@@ -1,1 +1,6 @@
-{}
+{
+  "baseUrl": "http://localhost:2368",
+  "adminEmail": "admin@admin.com",
+  "adminPassword": "abcde12345",
+  "chromeWebSecurity": false
+}
