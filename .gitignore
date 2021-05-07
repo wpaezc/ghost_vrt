@@ -1,4 +1,5 @@
 node_modules/*
 cypress/integration/examples/
 cypress/videos/
+cypress/screenshots/
 
