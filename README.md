@@ -49,4 +49,16 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 
 ###Funcionalidades bajo pruebas y escenarios
 
+- Escenarios de funcionalidad **Manejo de posts**
 
+|Cypress|Kraken|
+|-|-|
+|-----|Crear post sin publicar (Draft)|
+|-----|Crear post y publicar en el instante|
+|-----|Crear post con una fecha futura para su publicación|
+
+- Manejo de páginas
+
+|Cypress|Kraken|
+|-|-|
+|Completar|Completar|
