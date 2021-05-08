@@ -8,4 +8,4 @@ Feature: Post management
     When I publish "future"
     When I return to "Posts" page
     Then I should see item listed with "$$name_1" and "Scheduled" state
-    Then I should NOT see "$$name_1" post in "<GHOST_URL>"
+    Then I should NOT see "$$name_1" in "<GHOST_URL>"

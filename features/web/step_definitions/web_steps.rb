@@ -94,17 +94,26 @@ if ENV["ADB_DEVICE_ARG"].nil?
     raise "Fail test" unless article_item.text.include? title
   end
 
-  Then(/^I should NOT see "([^\"]*)" post in "([^\"]*)"$/) do |title, ghost_url|
-    @driver.navigate.to ghost_url
+  Then(/^I should NOT see "([^\"]*)" in "([^\"]*)"$/) do |title, ghost_url|
+    @driver.navigate.to "#{ghost_url}/#{title.downcase}"
     sleep 1
 
-    article_item = @driver.find_elements(:css, ".post-feed article").first
-    raise "Fail test" if article_item.text.include? title
+    el = @driver.find_element(:css, ".error-message .error-code")
+    raise "Fail test" unless el.text.match("404")
   end
 
   Then(/^I should see "([^\"]*)" slug on url alert$/) do |slug|
     el = @driver.find_element(:css, ".gh-notifications a")
     link = el.attribute("href")
     raise "Fail test" unless link.match(slug.downcase)
+  end
+
+  Then(/^I get url from success alert and see "([^\"]*)" on page$/) do |title|
+    el = @driver.find_element(:css, ".gh-notifications a")
+    link = el.attribute("href")
+    @driver.navigate.to link
+
+    text = @driver.find_element(:css, "h1.post-full-title").text
+    raise "Fail test" unless text == title
   end
 end

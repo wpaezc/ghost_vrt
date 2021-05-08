@@ -57,10 +57,15 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 |-----|Crear post y publicar en el instante|
 |-----|Crear post con una fecha futura para su publicación|
 |-----|Crear post con un slug especifico en el URL| 
-|-----|Cambiar estdo de post de "Published" a "Unpublished"|
+|-----|Cambiar estado de post de "Published" a "Unpublished"|
 
 - Manejo de páginas
 
 |Cypress|Kraken|
 |-|-|
-|Completar|Completar|
+|-----|Crear página sin publicar (Draft)|
+|-----|Crear página y publicar en el instante|
+|-----|Crear página con una fecha futura para su publicación|
+|-----|Crear página con un slug especifico en el URL| 
+|-----|Cambiar estado de página de "Published" a "Unpublished"|
+
