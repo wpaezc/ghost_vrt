@@ -1,5 +1,3 @@
-require 'byebug'
-
 if ENV["ADB_DEVICE_ARG"].nil?
   require 'kraken-mobile/steps/web/kraken_steps'
 
@@ -35,6 +33,21 @@ if ENV["ADB_DEVICE_ARG"].nil?
     sleep 1
   end
 
+  When(/^I change slug to "([^\"]*)"$/) do |slug|
+    #This returns index
+    @driver.find_element(:css, "button.post-settings").click
+    @driver.find_element(:name, 'post-setting-slug').send_keys(slug.downcase)
+    @driver.find_element(:css, 'button.close').click
+
+    sleep 1
+  end
+
+  When(/^I click on published alert$/) do
+    #This returns index
+    @driver.find_element(:css, ".gh-notifications").click
+    sleep 1
+  end
+
   When(/^I publish "([^\"]*)"$/) do |resource|
     #This returns index
     @driver.find_element(:css, "div.gh-publishmenu-trigger").click
@@ -50,6 +63,12 @@ if ENV["ADB_DEVICE_ARG"].nil?
       @driver.find_element(:css, "button.gh-publishmenu-button").click
     end
     sleep 1
+  end
+
+  When(/^I unpublish$/) do
+    @driver.find_elements(:css, "div.gh-publishmenu-radio-content").first.click()
+    @driver.find_element(:css, "button.gh-publishmenu-button").click
+    sleep(1)
   end
 
   Then(/^I should see item listed with "([^\"]*)" and "([^\"]*)" state$/) do |title, state|
@@ -81,5 +100,11 @@ if ENV["ADB_DEVICE_ARG"].nil?
 
     article_item = @driver.find_elements(:css, ".post-feed article").first
     raise "Fail test" if article_item.text.include? title
+  end
+
+  Then(/^I should see "([^\"]*)" slug on url alert$/) do |slug|
+    el = @driver.find_element(:css, ".gh-notifications a")
+    link = el.attribute("href")
+    raise "Fail test" unless link.match(slug.downcase)
   end
 end
