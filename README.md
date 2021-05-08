@@ -9,10 +9,13 @@
 
 ## Configuración general
 Para poder correr estas pruebas se requiere ya tener instalado el aplicativo **GHOST** en su versión **3.3.0**. 
+
 Se necesita conocer el **URL** donde esta funcionado GHOST, así también es necesario contar un **usuario administrador** y un **password** que deben ser ingresados en los archivos de configuración de Cypress y el archivo de configuración de Kraken. 
+
 Para ambas herramientas se tiene por defecto los siguientes valores: 
+
 URL: ```http://localhost:2368/``` 
-USUARIO: ```admin@admin.com``` 
+USUARIO: ```admin@admin.com```
 PASSWORD: ```abcde12345``` 
 
 ### Pasos para correr las pruebas con Cypress
