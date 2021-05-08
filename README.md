@@ -56,6 +56,8 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 |Crear post sin publicar (Draft)|Crear post sin publicar (Draft)|
 |-----|Crear post y publicar en el instante|
 |-----|Crear post con una fecha futura para su publicación|
+|-----|Crear post con un slug especifico en el URL| 
+|-----|Cambiar estdo de post de "Published" a "Unpublished"|
 
 - Manejo de páginas
 
