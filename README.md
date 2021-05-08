@@ -19,7 +19,7 @@ USUARIO: ```admin@admin.com```
 PASSWORD: ```abcde12345``` 
 
 ### Pasos para correr las pruebas con Cypress
-La version de node recomendada es la ```12.20.1```. Luego de clonar el repositor dar un ```npm install``` y proceder a cambiar los valores del archivo de configuración ```cypress.json``` en caso tengo otro url _baseUrl_, usuario _adminEmail_ o password _adminPassword_.
+La version de node recomendada es la ```12.20.1```. Luego de clonar el repositor dar un ```npm install``` y cambiar los siguientes valores del archivo de configuración ```cypress.json``` en caso tenga otro _baseUrl_, _adminEmail_ o _adminPassword_.
 
 ```json
 {
@@ -32,9 +32,9 @@ La version de node recomendada es la ```12.20.1```. Luego de clonar el repositor
 Se ejecutan las pruebas ***Cypress*** con el comando: ```npm run cypress:open``` o ```npm run cypress:headless```
 
 ### Pasos para correr las pruebas con Kraken
-En caso no tengo kraken-mobile instalado, se recomienda instalar la version de ruby ```2.6.7```, ejecutar un ```gem install bundler``` y luego ```bundle install```  
+En caso no tenga kraken-mobile instalado, se recomienda instalar la version de ruby ```2.6.7```, ejecutar un ```gem install bundler``` y luego ```bundle install```  
 
-Si ya tiene instalado kraken-mobile abrir el archivo ```kraken_properties.json``` y configuar los valores de url _GHOST_URL_, usuario _USER_ o password _PASSWORD_. 
+Si ya tiene instalado kraken-mobile abrir el archivo ```kraken_properties.json``` y configuar los valores de _GHOST_URL_, _USER_ o _PASSWORD_ en caso tenga otros valores. 
 ```json
 {
   "@user1": {
@@ -47,13 +47,13 @@ Si ya tiene instalado kraken-mobile abrir el archivo ```kraken_properties.json``
 
 Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --properties=kraken_properties.json```
 
-###Funcionalidades bajo pruebas y escenarios
+### Funcionalidades bajo pruebas y escenarios
 
 - Escenarios de funcionalidad **Manejo de posts**
 
 |Cypress|Kraken|
 |-|-|
-|-----|Crear post sin publicar (Draft)|
+|Crear post sin publicar (Draft)|Crear post sin publicar (Draft)|
 |-----|Crear post y publicar en el instante|
 |-----|Crear post con una fecha futura para su publicación|
 
