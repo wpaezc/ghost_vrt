@@ -15,9 +15,44 @@ if ENV["ADB_DEVICE_ARG"].nil?
     sleep 1
   end
 
+  When(/^I change tag to "([^\"]*)"$/) do |tag|
+    @driver.find_element(:css, "button.post-settings").click
+    @driver.find_element(:css, "#tag-input").send_keys(tag.downcase, :enter)
+    @driver.find_element(:css, 'button.close').click
+  end
+
   When(/^I click on new "([^\"]*)" button$/) do |resource|
-    @driver.find_element(:css, "a[href=\"#/editor/#{resource.downcase}/\"]").click
+    if resource.downcase == "tag"
+      @driver.find_element(:css, "a[href=\"#/tags/new/\"]").click
+    else
+      @driver.find_element(:css, "a[href=\"#/editor/#{resource.downcase}/\"]").click
+    end
+  end
+
+  When(/^I click save button$/) do
+    @driver.find_element(:css, "button.gh-btn-blue").click
     sleep 1
+  end
+
+  When(/^I click delete button$/) do
+    @driver.find_element(:css, "button.gh-btn-red").click
+    sleep 1
+  end
+
+  When(/^I fill tag form with title "([^\"]*)" and description "([^\"]*)"$/) do |title, description|
+    @driver.find_element(:name, 'name').send_keys(title)
+    @driver.find_element(:name, 'description').send_keys(description)
+    sleep 1
+  end
+
+  When(/^I fill tag form with meta title "([^\"]*)" and meta description "([^\"]*)"$/) do |title, description|
+    @driver.find_element(:name, 'metaTitle').send_keys(title)
+    @driver.find_element(:name, 'metaDescription').send_keys(description)
+    sleep 1
+  end
+
+  When(/^I update slug with "([^\"]*)"$/) do |slug|
+    @driver.find_element(:name, 'slug').send_keys(slug)
   end
 
   When(/^I fill editor title with "([^\"]*)"$/) do |title|
@@ -102,6 +137,22 @@ if ENV["ADB_DEVICE_ARG"].nil?
     raise "Fail test" unless el.text.match("404")
   end
 
+  Then(/^I should NOT see tag with "([^\"]*)" in "([^\"]*)"$/) do |title, ghost_url|
+    @driver.navigate.to "#{ghost_url}/tag/#{title.downcase}"
+    sleep 1
+
+    el = @driver.find_element(:css, ".error-message .error-code")
+    raise "Fail test" unless el.text.match("404")
+  end
+
+  Then(/^I should see tag with "([^\"]*)" in "([^\"]*)"$/) do |title, ghost_url|
+    @driver.navigate.to "#{ghost_url}/tag/#{title.downcase}"
+    sleep 1
+
+    el = @driver.find_element(:css, "h1.site-title")
+    raise "Fail test" unless el.text.match(title)
+  end
+
   Then(/^I should see "([^\"]*)" slug on url alert$/) do |slug|
     el = @driver.find_element(:css, ".gh-notifications a")
     link = el.attribute("href")
@@ -115,5 +166,22 @@ if ENV["ADB_DEVICE_ARG"].nil?
 
     text = @driver.find_element(:css, "h1.post-full-title").text
     raise "Fail test" unless text == title
+  end
+
+  Then(/^I should see slug tag engine "([^\"]*)" updated with "([^\"]*)"$/) do |ghost_url, slug|
+    text = @driver.find_element(:css, ".seo-preview-link").text
+
+    raise "Fail test" unless text.match(ghost_url)
+    raise "Fail test" unless text.match(slug)
+  end
+
+  Then(/^I should see meta tag "([^\"]*)" engine in "([^\"]*)" updated with "([^\"]*)"$/) do |type, ghost_url, datum|
+    text = @driver.find_element(:css, ".seo-preview-#{type}").text
+
+    raise "Fail test" unless text.match(datum)
+  end
+
+  Then(/^I should see confirmation modal$/) do
+    @driver.find_element(:css, ".modal-footer button.gh-btn-red").click()
   end
 end

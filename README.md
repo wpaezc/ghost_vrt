@@ -69,3 +69,12 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 |-----|Crear página con un slug especifico en el URL| 
 |-----|Cambiar estado de página de "Published" a "Unpublished"|
 
+- Manejo de Tags
+
+|Cypress|Kraken|
+|-|-|
+|-----|Crear tag sin post asociado|
+|-----|Crear tag y asociar post|
+|-----|Cambiar slug de navegación del tag|
+|-----|Cambiar meta data del tag|
+|-----|Eliminar un tag sin posts asociados|
