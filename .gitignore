@@ -3,3 +3,6 @@ cypress/integration/examples/
 cypress/videos/
 cypress/screenshots/
 
+reports/
+.variable.txt
+.byebug
