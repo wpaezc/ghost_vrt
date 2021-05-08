@@ -4,7 +4,7 @@
 |-------|------|
 |Completar|Completar|
 |Completar|Completar|
-|Completar|Completar|
+|Christtian Alfredo Manzo Parra|ca.manzo973@uniandes.edu.co|
 |Wenceslao Crhistopher Paez Chavez|w.paezc@uniandes.edu.co|
 
 ## Configuración general
