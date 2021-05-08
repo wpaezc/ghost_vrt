@@ -1,0 +1,7 @@
+{
+  "@user1": {
+    "GHOST_URL": "http://localhost:2368",
+    "USER": "admin@admin.com",
+    "PASSWORD": "abcde12345"
+  }
+}
