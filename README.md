@@ -52,7 +52,7 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 
 - Escenarios de funcionalidad **Manejo de posts**
 
-|Cypress|Kraken|
+|Playwright|Kraken|
 |-|-|
 |Crear post sin publicar (Draft)|Crear post sin publicar (Draft)|
 |-----|Crear post y publicar en el instante|
@@ -62,17 +62,17 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 
 - Escenarios de funcionalidad **Manejo de páginas**
 
-|Cypress|Kraken|
+|Playwright|Kraken|
 |-|-|
-|-----|Crear página sin publicar (Draft)|
-|-----|Crear página y publicar en el instante|
-|-----|Crear página con una fecha futura para su publicación|
-|-----|Crear página con un slug especifico en el URL| 
-|-----|Cambiar estado de página de "Published" a "Unpublished"|
+|Crear página sin publicar (Draft)|Crear página sin publicar (Draft)|
+|Crear página y publicar sin adicionar fecha|Crear página y publicar en el instante|
+|Consultar páginas publicadas|Crear página con una fecha futura para su publicación|
+|Consultar páginas agendadas|Crear página con un slug especifico en el URL| 
+|Consultar todas las páginas sin publicar |Cambiar estado de página de "Published" a "Unpublished"|
 
 - Escenarios de funcionalidad **Manejo de Tags**
 
-|Cypress|Kraken|
+|Playwright|Kraken|
 |-|-|
 |-----|Crear tag sin post asociado|
 |-----|Crear tag y asociar post|
