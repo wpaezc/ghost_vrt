@@ -1,7 +1,13 @@
 //Importar Playwright
 const playwright = require('playwright');
+const config = require('../playwright_properties.json');
 
-const url = 'http://localhost:2368/ghost/#/site';
+const ghostUrl = config.ghostUrl
+const user = config.user
+const password = config.password
+
+const url = `${ghostUrl}/ghost/#/signin`;
+console.log('Run tests for PAGE MANAGEMENT');
 
 //Función flecha asíncrona
 (async () => {
@@ -9,6 +15,7 @@ const url = 'http://localhost:2368/ghost/#/site';
   for (const browserType of ['chromium']){//, 'firefox', 'webkit']) {
     //Contenido de la prueba
     console.log(browserType+'-------------------------------------------')
+    console.log('Scenario: Search published pages')
 
     //Creación del objeto browser, el contexto del mismo y el objeto page para manejar la página
     const browser = await playwright[browserType].launch();
@@ -25,11 +32,11 @@ const url = 'http://localhost:2368/ghost/#/site';
     await page.screenshot({path: './pagina2.png'})
     console.log('Project loaded')
     // ingresar informacion para ingresar
-    await page.fill('id=ember8', 'ivan1016017@gmail.com');
+    await page.fill('id=ember8', user)
     await new Promise(r => setTimeout(r, 1000));
     await page.screenshot({path: './pagina3.png'})
 
-    await page.fill('id=ember10', 'ivandario1234');
+    await page.fill('id=ember10', password)
     await new Promise(r => setTimeout(r, 1000));
     await page.screenshot({path: './pagina4.png'})
     // ingresar a pages
@@ -49,9 +56,8 @@ const url = 'http://localhost:2368/ghost/#/site';
     await new Promise(r => setTimeout(r, 1000));
     await page.screenshot({path: './pagina8.png'})
 
-
-
     //Finalizar la prueba
+    console.log('Ok Scenario: Search published pages')
     await browser.close();
   }
   return;
