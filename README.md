@@ -2,7 +2,6 @@
 ## Integrantes
 |Nombres|Email|
 |-------|------|
-|Completar|Completar|
 |Manuel Alejandro Sanchez Masferrer|ma.sanchezm12@uniandes.edu.co|
 |Ivan Dario Peñaloza Rojas|i.penalozar@uniandes.edu.co|
 |Christtian Alfredo Manzo Parra|ca.manzo973@uniandes.edu.co|
@@ -19,18 +18,7 @@ URL: ```http://localhost:2368/```
 USUARIO: ```admin@admin.com```
 PASSWORD: ```abcde12345``` 
 
-### Pasos para correr las pruebas con Cypress
-La version de node recomendada es la ```12.20.1```. Luego de clonar el repositor dar un ```npm install``` y cambiar los siguientes valores del archivo de configuración ```cypress.json``` en caso tenga otro _baseUrl_, _adminEmail_ o _adminPassword_.
-
-```json
-{
-  "baseUrl": "http://localhost:2368",
-  "adminEmail": "admin@admin.com",
-  "adminPassword": "abcde12345",
-  "chromeWebSecurity": false
-}
-```
-Se ejecutan las pruebas ***Cypress*** con el comando: ```npm run cypress:open``` o ```npm run cypress:headless```
+### Pasos para correr las pruebas con Playwright
 
 ### Pasos para correr las pruebas con Kraken
 En caso no tenga kraken-mobile instalado, se recomienda instalar la version de ruby ```2.6.7```, ejecutar un ```gem install bundler``` y luego ```bundle install```  

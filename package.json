@@ -4,13 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-     "cypress:open": "cypress open",
-     "cypress:headless": "cypress run --headless"
+    "cypress:open": "cypress open",
+    "cypress:headless": "cypress run --headless"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "cypress": "^7.2.0"
-  }
+  "devDependencies": {}
 }
