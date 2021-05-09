@@ -57,44 +57,6 @@ const url = 'http://localhost:2368/ghost/#/site';
     await new Promise(r => setTimeout(r, 1000));
     await page.screenshot({path: './pagina10.png'})
 
-
-    //Interactuar con la aplicación web
-    //...
-    // await page.click('css=a.btn.btn-link')
-    // console.log(`Clicked "cancel". URL is now ${page.url()}`)
-
-    // await page.click('css=a.btn.btn-link')
-    // console.log(`Clicked "register". URL is now ${page.url()}`)
-
-    // await page.click('css=button.btn.btn-primary')
-    // let feedback = await page.$$('css=div.invalid-feedback');
-
-    // let elems=0
-    // for(let i of feedback){elems++}
-    // await page.screenshot({path:'./form-feedback.png'})
-    // console.log(`Clicked "Register" with an empty form. Feedback is shown in ${elems} elements`)
-
-    // await page.type('#ember8.email', 'ivan1016017@gmail.com');
-    // // await page.type('input[formcontrolname="lastName"]', 'Pruebas');
-    // // await page.type('input[formcontrolname="username"]', 'pruebas');
-    // await page.type('#ember10.password"]', 'ivandario1234');
-    // await page.click('button.login')
-
-    // await new Promise(r => setTimeout(r, 7000));
-    // await page.screenshot({path:'./success-feedback.png'})
-
-    // feedback = await page.$("css=div.alert.alert-success")
-    // console.log(`Success dialog after creating user with message: ${await feedback.innerText()}`)
-
-    // await page.type('input[formcontrolname="username"]', 'pruebas');
-    // await page.type('input[formcontrolname="password"]', 'MISO4208');
-    // await page.click('css=button.btn.btn-primary')
-    // await new Promise(r => setTimeout(r, 7000));
-
-    // feedback = await page.$('text="Hi Monitor!"');
-    // await page.screenshot({path:'./after-login.png'})
-    // console.log(`Logged in. Your user was ${feedback?'successfully':'not'} created`)
-
     //Finalizar la prueba
     await browser.close();
   }
