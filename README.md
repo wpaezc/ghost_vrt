@@ -82,7 +82,7 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 
 - Escenarios de funcionalidad **Manejo de usuarios**
 
-|Cypress|Kraken|
+|Playwright|Kraken|
 |-|-|
 |-----|Crear una invitación con un email inválido|
 |-----|Crear una invitación con un email válido|
