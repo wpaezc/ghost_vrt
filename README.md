@@ -19,6 +19,14 @@ USUARIO: ```admin@admin.com```
 PASSWORD: ```abcde12345``` 
 
 ### Pasos para correr las pruebas con Playwright
+La version de node recomendada es la ```12.20.1```. Luego de clonar el repositor dar un ```npm install``` y cambiar los siguientes valores del archivo de configuración ```playwright_properties.json``` en caso tenga otro ghostUrl, user o password.
+```json
+{
+  "ghostUrl": "http://localhost:2368",
+  "user": "admin@admin.com",
+  "password": "abcde12345"
+}
+```
 
 ### Pasos para correr las pruebas con Kraken
 En caso no tenga kraken-mobile instalado, se recomienda instalar la version de ruby ```2.6.7```, ejecutar un ```gem install bundler``` y luego ```bundle install```  
