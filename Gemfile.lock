@@ -48,6 +48,7 @@ GEM
     faker (2.10.0)
       i18n (>= 1.6, < 1.8)
     ffi (1.15.0)
+    ffi (1.15.0-x64-mingw32)
     gherkin (5.1.0)
     httpclient (2.8.3)
     i18n (1.7.1)
@@ -72,6 +73,8 @@ GEM
     multi_test (0.1.2)
     necromancer (0.4.0)
     nokogiri (1.10.10)
+      mini_portile2 (~> 2.4.0)
+    nokogiri (1.10.10-x64-mingw32)
       mini_portile2 (~> 2.4.0)
     parallel (1.14.0)
     pastel (0.7.4)
@@ -109,6 +112,7 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+  x64-mingw32
   x86_64-linux
 
 DEPENDENCIES
