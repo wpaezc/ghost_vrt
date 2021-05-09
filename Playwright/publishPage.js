@@ -45,7 +45,7 @@ const url = 'http://localhost:2368/ghost/#/site';
     await new Promise(r => setTimeout(r, 1000));
     await page.screenshot({path: './pagina7.png'})
 
-    await page.fill('id=ember332', 'blabla');
+    await page.fill('textarea', 'blabla');
     await new Promise(r => setTimeout(r, 1000));
     await page.screenshot({path: './pagina8.png'})
 

@@ -7,9 +7,13 @@ context('Post management', () => {
       it('shows on index page with draft status', () => {
         let title = `Title of page -${Math.random().toString()}`
         cy.get('a[href*="#/pages/"]').click()
-        cy.get('a[href*="#/editor/page/"]').first().click()
+        cy.get('a[href*="editor/page/"]').first().click()
         cy.get('textarea').first().type(title)
-        cy.get('a[href*="#/pages/"]').click()
+        // cy.contains('0 words').click()
+        // // cy.get('a[href*="#/pages/"].blue').click()
+        // cy.get("a[href='#/pages/']").first().click();
+        
+        
         
         
 
