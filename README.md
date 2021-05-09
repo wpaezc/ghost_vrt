@@ -59,7 +59,7 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 |-----|Crear post con un slug especifico en el URL| 
 |-----|Cambiar estado de post de "Published" a "Unpublished"|
 
-- Manejo de páginas
+- Escenarios de funcionalidad **Manejo de páginas**
 
 |Cypress|Kraken|
 |-|-|
@@ -69,7 +69,7 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 |-----|Crear página con un slug especifico en el URL| 
 |-----|Cambiar estado de página de "Published" a "Unpublished"|
 
-- Manejo de Tags
+- Escenarios de funcionalidad **Manejo de Tags**
 
 |Cypress|Kraken|
 |-|-|
@@ -78,3 +78,17 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 |-----|Cambiar slug de navegación del tag|
 |-----|Cambiar meta data del tag|
 |-----|Eliminar un tag sin posts asociados|
+
+- Escenarios de funcionalidad **Manejo de usuarios**
+
+|Cypress|Kraken|
+|-|-|
+|-----|Crear una invitación con un email inválido|
+|-----|Crear una invitación con un email válido|
+|-----|Elimina invitación a un usuario|
+|-----|Actualiza los datos del usuario|
+|-----|Cambio de password inválido|
+
+### Pruebas ejecutadas
+
+[Video donde se ejecutan los 20 escenarios en Kraken](https://youtu.be/htY30xW-_C0)

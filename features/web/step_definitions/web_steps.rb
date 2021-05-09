@@ -11,7 +11,12 @@ if ENV["ADB_DEVICE_ARG"].nil?
   end
 
   When(/^I navigate to "([^\"]*)" page$/) do |resource|
-    @driver.find_element(:css, "a[href=\"#/#{resource.downcase}/\"]").click
+    if resource == 'my profile'
+      @driver.find_element(:css, ".gh-nav-bottom .gh-user-email").click
+      @driver.find_elements(:css, "li[role=\"presentation\"]")[2].click
+    else
+      @driver.find_element(:css, "a[href=\"#/#{resource.downcase}/\"]").click
+    end
     sleep 1
   end
 
@@ -24,6 +29,8 @@ if ENV["ADB_DEVICE_ARG"].nil?
   When(/^I click on new "([^\"]*)" button$/) do |resource|
     if resource.downcase == "tag"
       @driver.find_element(:css, "a[href=\"#/tags/new/\"]").click
+    elsif resource.downcase == "user"
+      @driver.find_element(:css, "button.gh-btn-green").click
     else
       @driver.find_element(:css, "a[href=\"#/editor/#{resource.downcase}/\"]").click
     end
@@ -36,6 +43,12 @@ if ENV["ADB_DEVICE_ARG"].nil?
 
   When(/^I click delete button$/) do
     @driver.find_element(:css, "button.gh-btn-red").click
+    sleep 1
+  end
+
+  When(/^I enter "([^\"]*)" as email$/) do |email|
+    @driver.find_element(:name, 'email').send_keys(email)
+    @driver.find_element(:css, '.modal-footer .gh-btn-green').click
     sleep 1
   end
 
@@ -104,6 +117,33 @@ if ENV["ADB_DEVICE_ARG"].nil?
     @driver.find_elements(:css, "div.gh-publishmenu-radio-content").first.click()
     @driver.find_element(:css, "button.gh-publishmenu-button").click
     sleep(1)
+  end
+
+  When(/^I revoke invitation for "([^\"]*)"$/) do |email|
+    @driver.navigate.refresh
+    sleep 1
+    li_items = @driver.find_elements(:css, ".apps-grid-cell")
+    item = li_items.find { |item| item.text.match(email)}
+
+    raise "Fail test" unless item
+    item.find_element(:css, "a[href=\"#revoke\"]").click
+    sleep 1
+  end
+
+  When(/^I change name to "([^\"]*)"$/) do |name|
+    @driver.find_element(:css, '#user-name').send_keys(name)
+    @driver.find_element(:css, 'button.gh-btn-blue').click()
+    sleep 1
+  end
+
+  When(/^I change password with "([^\"]*)"$/) do |password|
+    new_password = SecureRandom.hex
+    @driver.find_element(:css, '#user-password-old').send_keys(password)
+    @driver.find_element(:css, '#user-password-new').send_keys(new_password)
+    @driver.find_element(:css, '#user-new-password-verification').send_keys(new_password)
+    @driver.find_element(:css, '.button-change-password').click
+
+    sleep 1
   end
 
   Then(/^I should see item listed with "([^\"]*)" and "([^\"]*)" state$/) do |title, state|
@@ -183,5 +223,38 @@ if ENV["ADB_DEVICE_ARG"].nil?
 
   Then(/^I should see confirmation modal$/) do
     @driver.find_element(:css, ".modal-footer button.gh-btn-red").click()
+  end
+
+  Then(/^I should see "([^\"]*)" error$/) do |text|
+    response = @driver.find_element(:css, ".response").text
+
+    raise "Fail test" unless response.match(text)
+  end
+
+  Then(/^I should see invitation for "([^\"]*)"$/) do |email|
+    @driver.navigate.refresh
+    sleep 2
+    text = @driver.find_element(:css, '.apps-grid').text
+
+    raise "Fail test" unless text.match(email)
+  end
+
+  Then(/^I should NOT see invitation for "([^\"]*)"$/) do |email|
+    text = @driver.find_element(:css, '.apps-grid').text
+
+    raise "Fail test" if text.match(email)
+  end
+
+  Then(/^I should see "([^\"]*)" on navigation footer$/) do |email|
+    @driver.navigate.refresh
+    sleep 2
+
+    text = @driver.find_element(:css, ".gh-nav-bottom").text
+    raise "Fail test" unless text.match(email)
+  end
+
+  Then(/^I should see error message "([^\"]*)"$/) do |message|
+    text = @driver.find_element(:css, ".gh-alert-red").text
+    raise "Fail test" unless text.match(message)
   end
 end
