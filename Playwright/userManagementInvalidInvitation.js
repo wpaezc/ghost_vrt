@@ -40,12 +40,11 @@ console.log('Run tests for USER MANAGEMENT');
     await page.click('.view-actions')
     await new Promise(r => setTimeout(r, 3000));
     await page.screenshot({path: './invite2.png'})
-    await page.fill('id=new-user-email', 'manuelmasferrer@gmail.ccc')
-    await page.selectOption('id=new-user-role', "608cecca2e33ef75a3b9cee1")
+    await page.fill('id=new-user-email', 'example@gmail')
     await page.screenshot({path: './filled_invite2.png'})
     await page.click('"Send invitation now"')
     await new Promise(r => setTimeout(r, 7000));
-    await page.screenshot({path: './sent_invite2.png'})
+    await page.screenshot({path: './failed_invite2.png'})
 
     //Finalizar la prueba
     console.log('OK Scenario: Invalid Invitation')
