@@ -1,7 +1,7 @@
 //require('./userManagementChangeUserData.js')
 //require('./userManagementInvalidInvitation.js')
-//require('./userManagementInviteStaff.js')
-//require('./userManagementRevokeInvitation.js')
+require('./userManagementInviteStaff.js')
+require('./userManagementRevokeInvitation.js')
 require('./userManagementInvalidPassword.js')
 
 require('./pageManagementCreatePageDraft.js')
