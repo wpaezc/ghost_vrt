@@ -1,4 +1,4 @@
-# Pruebas E2E con Cypress y Kraken
+# Pruebas E2E con Playwright y Kraken
 ## Integrantes
 |Nombres|Email|
 |-------|------|
@@ -14,7 +14,7 @@ El reporte se encuentra en la WIKI del proyecto: [Link](https://github.com/wpaez
 ## Configuración general
 Para poder correr estas pruebas se requiere ya tener instalado el aplicativo **GHOST** en su versión **3.3.0**. 
 
-Se necesita conocer el **URL** donde esta funcionado GHOST, así también es necesario contar un **usuario administrador** y un **password** que deben ser ingresados en los archivos de configuración de Cypress y el archivo de configuración de Kraken. 
+Se necesita conocer el **URL** donde esta funcionado GHOST, así también es necesario contar un **usuario administrador** y un **password** que deben ser ingresados en los archivos de configuración de Playwright y el archivo de configuración de Kraken. 
 
 Para ambas herramientas se tiene por defecto los siguientes valores: 
 
@@ -35,7 +35,7 @@ Todos los escenarios se ecuentran en la carpeta _Playwright_
 
 Para ejecutar todas las pruebas ***playwright*** usar el comando: ```node Playwright/runAllTests.js```
 
-Para ejecutar ejecutar una prubea individual ***playwright*** usar el comando: ```node Playwright/NombreDelArchivo.js```
+Para ejecutar ejecutar una prueba individual ***playwright*** usar el comando: ```node Playwright/NombreDelArchivo.js```
 
 
 ### Pasos para correr las pruebas con Kraken
