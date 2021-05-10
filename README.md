@@ -31,11 +31,33 @@ La version de node recomendada es la ```12.20.1```. Luego de clonar el repositor
   "password": "abcde12345"
 }
 ```
-Todos los escenarios se ecuentran en la carpeta _Playwright_
 
-Para ejecutar todas las pruebas ***playwright*** usar el comando: ```node Playwright/runAllTests.js```
+Se tomaron dos enfoques, escribir los escenarios solo con ```Playwright``` y tambien escribir algunos escenarios con un test runner ```Jest```. Esto debido a que con Jest nos facilita compilar código Typescript y crear modelos para utilizar el patron Page Object. 
 
-Para ejecutar ejecutar una prueba individual ***playwright*** usar el comando: ```node Playwright/NombreDelArchivo.js```
+Los escenarios se ecuentran en la carpeta _Playwright_ y _Playwright-Jest_
+
+Para ejecutar los 15 escenarios de ***playwright*** se tienen que realizar de forma individual:
+```sh
+node Playwright/pageManagementCreatePageDraft.js
+node Playwright/pageManagementPublishPage.js
+node Playwright/pageManagementSearchDraftPages.js
+node Playwright/pageManagementSearchPublishedPages.js
+node Playwright/pageManagementSearchScheduledPages.js
+
+node Playwright/postManagementCreatePostDraft.js
+node Playwright/postManagementPublishPost.js
+node Playwright/postManagementSearchDraftPosts.js
+node Playwright/postManagementSearchPublishedPosts.js
+node Playwright/postManagementSearchScheduledPosts.js
+
+node Playwright/userManagementChangeUserData.js
+node Playwright/userManagementInvalidInvitation.js
+node Playwright/userManagementInviteStaff.js
+node Playwright/userManagementRevokeInvitation.js
+node Playwright/userManagementInvalidPassword.js
+```
+
+Para ejecutar ejecutar los 5 escenarios faltantes ***playwright-jest*** usar el comando: ```npm test```
 
 
 ### Pasos para correr las pruebas con Kraken
