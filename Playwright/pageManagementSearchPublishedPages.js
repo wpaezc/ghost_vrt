@@ -1,4 +1,5 @@
 //Importar Playwright
+const { LoginPage } = require('./models/LoginPage');
 const playwright = require('playwright');
 const config = require('../playwright_properties.json');
 
@@ -21,29 +22,9 @@ console.log('Run tests for PAGE MANAGEMENT');
     const browser = await playwright[browserType].launch();
     const context = await browser.newContext();
     const page = await context.newPage();
+    const loginPage = new LoginPage(page, url, user, password);
+    loginPage.enter_ghost()
     
-    //Abrir la URL a probar en la página y cargar el proyecto en una SPA
-    await page.goto(url);
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: './pagina.png'})
-
-    await page.click('css=button')
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: './pagina2.png'})
-    console.log('Project loaded')
-    // ingresar informacion para ingresar
-    await page.fill('id=ember8', user)
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: './pagina3.png'})
-
-    await page.fill('id=ember10', password)
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: './pagina4.png'})
-    // ingresar a pages
-    await page.click('id=ember12');
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: './pagina5.png'})
-
     await page.click('id=ember30');
     await new Promise(r => setTimeout(r, 1000));
     await page.screenshot({path: './pagina6.png'})
