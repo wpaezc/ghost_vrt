@@ -25,7 +25,7 @@ console.log('Run tests for USER MANAGEMENT');
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
     await page.goto(url);
     await new Promise(r => setTimeout(r, 7000));
-    // Ingresar con las credenciales del usuario IMPORTANTE CAMBIAR  CREDENCIALES SEGUN USUARIO LOCAL
+    // Ingresar con las credenciales del usuario 
     await page.fill('id=ember8', user)
     await page.fill('id=ember10', password)
     await page.screenshot({path: './pagina1.png'})
@@ -40,15 +40,18 @@ console.log('Run tests for USER MANAGEMENT');
     await page.click('.view-actions')
     await new Promise(r => setTimeout(r, 3000));
     await page.screenshot({path: './invite1.png'})
-    await page.fill('id=new-user-email', 'manuelmasferrer@gmail.com')
+    await page.fill('id=new-user-email', 'newuser@gmail.com')
     await page.selectOption('id=new-user-role', "608cecca2e33ef75a3b9cee1")
     await page.screenshot({path: './filled_invite1.png'})
     await page.click('"Send invitation now"')
     await new Promise(r => setTimeout(r, 7000));
     await page.screenshot({path: './sent_invite1.png'})
 
-    //Finalizar la prueba
+    //Finalizar la prueba y cancelar la invitación enviada
     console.log('OK Scenario: Invites staff')
+    await page.click('text=Tags')
+    await page.click('text=Staff')
+    await page.click('"Revoke"')
     await browser.close();
   }
   return;
