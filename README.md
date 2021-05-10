@@ -104,11 +104,11 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 
 |Playwright|Kraken|
 |-|-|
-|-----|Crear tag sin post asociado|
-|-----|Crear tag y asociar post|
-|-----|Cambiar slug de navegación del tag|
-|-----|Cambiar meta data del tag|
-|-----|Eliminar un tag sin posts asociados|
+|Crear tag sin asociar a post|Crear tag sin post asociado|
+|Crear tag con slug no por defecto |Crear tag y asociar post|
+|Modificar el slug de un tag ya creado|Cambiar slug de navegación del tag|
+|Modificar el titulo de un tag ya creado|Cambiar meta data del tag|
+|Eliminar tag sin post asociado|Eliminar un tag sin posts asociados|
 
 - Escenarios de funcionalidad **Manejo de usuario**
 
