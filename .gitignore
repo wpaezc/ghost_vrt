@@ -6,3 +6,4 @@ cypress/screenshots/
 reports/
 .variable.txt
 .byebug
+screensTest/

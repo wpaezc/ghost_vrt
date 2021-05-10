@@ -5,10 +5,12 @@ import { NewTag } from "./newTag";
 
 const titleTest = "create-tag-diferentSlug"
 const pathScreenshotsTest =`./screensTest/${titleTest}/`
+const config = require('../playwright_properties.json');
 
-const url = 'http://localhost:2368/ghost/#/signin';
-const userEmail= 'admin@admin.com';
-const userPassword='abcde12345';
+const ghostUrl = config.ghostUrl
+const userEmail = config.user
+const userPassword = config.password
+const url = `${ghostUrl}/ghost/#/signin`;
 
 describe('Launch Tag tests', () => {
 
