@@ -7,6 +7,10 @@
 |Christtian Alfredo Manzo Parra|ca.manzo973@uniandes.edu.co|
 |Wenceslao Crhistopher Paez Chavez|w.paezc@uniandes.edu.co|
 
+## Pros y contras de las herramientas utilizadas
+
+El reporte se encuentra en la WIKI del proyecto: [Link](https://github.com/wpaezc/ghost_e2e/wiki/Evaluaci%C3%B3n-de-Herramientas)
+
 ## Configuración general
 Para poder correr estas pruebas se requiere ya tener instalado el aplicativo **GHOST** en su versión **3.3.0**. 
 
@@ -59,10 +63,10 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 |Playwright|Kraken|
 |-|-|
 |Crear post sin publicar (Draft)|Crear post sin publicar (Draft)|
-|-----|Crear post y publicar en el instante|
-|-----|Crear post con una fecha futura para su publicación|
-|-----|Crear post con un slug especifico en el URL| 
-|-----|Cambiar estado de post de "Published" a "Unpublished"|
+|Crear post y publicar sin adicionar fecha|Crear post y publicar en el instante|
+|Consultar post publicados|Crear post con una fecha futura para su publicación|
+|Consultar post agendados|Crear post con un slug especifico en el URL| 
+|Consultar todos los post sin publicar|Cambiar estado de post de "Published" a "Unpublished"|
 
 - Escenarios de funcionalidad **Manejo de páginas**
 
@@ -72,7 +76,7 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 |Crear página y publicar sin adicionar fecha|Crear página y publicar en el instante|
 |Consultar páginas publicadas|Crear página con una fecha futura para su publicación|
 |Consultar páginas agendadas|Crear página con un slug especifico en el URL| 
-|Consultar todas las páginas sin publicar |Cambiar estado de página de "Published" a "Unpublished"|
+|Consultar todas las páginas sin publicar|Cambiar estado de página de "Published" a "Unpublished"|
 
 - Escenarios de funcionalidad **Manejo de Tags**
 
@@ -90,7 +94,6 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 |-|-|
 |Actualiza los datos del usuario|Actualiza los datos del usuario|
 |Cambio de password inválido|Cambio de password inválido|
-
 
 - Escenarios de funcionalidad **Invitar nuevos usuarios**
 
