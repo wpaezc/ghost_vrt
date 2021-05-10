@@ -7,12 +7,11 @@ const ghostUrl = config.ghostUrl
 const user = config.user
 const password = config.password
 
-const url = `${ghostUrl}/ghost/#/signin`;
-console.log('Run tests for PAGE MANAGEMENT');
-
 const titleTest = "pageManagementCreatePageDraft"
 const pathScreenshotsTest =`./screensTest/${titleTest}/`
 
+const url = `${ghostUrl}/ghost/#/signin`;
+console.log('Run tests for PAGE MANAGEMENT');
 
 //Función flecha asíncrona
 (async () => {
