@@ -7,6 +7,9 @@ const ghostUrl = config.ghostUrl
 const user = config.user
 const password = config.password
 
+const titleTest = "postManagementSearchPublishedPosts"
+const pathScreenshotsTest =`./screensTest/${titleTest}/`
+
 const url = `${ghostUrl}/ghost/#/signin`;
 console.log('Run tests for POST MANAGEMENT');
 
@@ -28,15 +31,15 @@ console.log('Run tests for POST MANAGEMENT');
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
     await page.click('id=ember28');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: './pagina6.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './pagina6.png'})
     // // Buscar todo los bosquejos de posts
     await page.click('text=All Posts ');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: './pagina7.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './pagina7.png'})
 
     await page.click('text=Published Posts ');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: './pagina8.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './pagina8.png'})
 
     //Finalizar la prueba
     console.log('Ok Scenario: Search published posts')

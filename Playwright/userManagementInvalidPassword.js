@@ -6,6 +6,9 @@ const ghostUrl = config.ghostUrl
 const user = config.user
 const password = config.password
 
+const titleTest = "userManagementInvalidPassword"
+const pathScreenshotsTest =`./screensTest/${titleTest}/`
+
 const url = `${ghostUrl}/ghost/#/signin`;
 
 console.log('Run tests for USER MANAGEMENT');
@@ -28,26 +31,26 @@ console.log('Run tests for USER MANAGEMENT');
     // Ingresar con las credenciales del usuario
     await page.fill('id=ember8', user)
     await page.fill('id=ember10', password)
-    await page.screenshot({path: './pagina4.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './pagina4.png'})
     await page.click('id=ember12')
     await new Promise(r => setTimeout(r, 7000));
 
 
 
     // En la pagina principal, hacer click en la opcion Staff del sidebar
-    await page.screenshot({path: './loggedin4.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './loggedin4.png'})
     await page.click('id=ember32')
     await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({path: './staff4.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './staff4.png'})
     // En la pagina de Staff, hacer click en perfil del owner para editarlo
     await page.click('"Owner"')
     await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({path: './owner4.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './owner4.png'})
     await page.fill('id=user-password-old', 'manuel0123')
     await page.fill('id=user-password-new', 'manuel01234')
     await page.fill('id=user-new-password-verification', 'manuel01235')
     await page.click('"Change Password"')
-    await page.screenshot({path: './unmatchedPassword4.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './unmatchedPassword4.png'})
 
     //Finalizar la prueba
     console.log('Ok Scenario:  Change password with invalid values')

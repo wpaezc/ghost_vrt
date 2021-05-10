@@ -6,6 +6,10 @@ const ghostUrl = config.ghostUrl
 const user = config.user
 const password = config.password
 
+const titleTest = "userManagementInvalidInvitation"
+const pathScreenshotsTest =`./screensTest/${titleTest}/`
+
+
 const url = `${ghostUrl}/ghost/#/signin`;
 
 console.log('Run tests for USER MANAGEMENT');
@@ -28,23 +32,23 @@ console.log('Run tests for USER MANAGEMENT');
     // Ingresar con las credenciales del usuario
     await page.fill('id=ember8', user)
     await page.fill('id=ember10', password)
-    await page.screenshot({path: './pagina2.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './pagina2.png'})
     await page.click('id=ember12')
     await new Promise(r => setTimeout(r, 7000));
     // En la pagina principal, hacer click en la opcion Staff del sidebar
-    await page.screenshot({path: './loggedin2.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './loggedin2.png'})
     await page.click('id=ember32')
     await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({path: './staff2.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './staff2.png'})
     // En la pagina de Staff, hacer click en enviar invitacion  y llenar sus credenciales
     await page.click('.view-actions')
     await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({path: './invite2.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './invite2.png'})
     await page.fill('id=new-user-email', 'example@gmail')
-    await page.screenshot({path: './filled_invite2.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './filled_invite2.png'})
     await page.click('"Send invitation now"')
     await new Promise(r => setTimeout(r, 7000));
-    await page.screenshot({path: './failed_invite2.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './failed_invite2.png'})
 
     //Finalizar la prueba
     console.log('OK Scenario: Invalid Invitation')

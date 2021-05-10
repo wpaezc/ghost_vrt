@@ -6,6 +6,9 @@ const ghostUrl = config.ghostUrl
 const user = config.user
 const password = config.password
 
+const titleTest = "userManagementRevokeInvitation"
+const pathScreenshotsTest =`./screensTest/${titleTest}/`
+
 const url = `${ghostUrl}/ghost/#/signin`;
 
 console.log('Run tests for USER MANAGEMENT');

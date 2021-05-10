@@ -6,6 +6,9 @@ const ghostUrl = config.ghostUrl
 const user = config.user
 const password = config.password
 
+const titleTest = "userManagementChangeUserData"
+const pathScreenshotsTest =`./screensTest/${titleTest}/`
+
 const url = `${ghostUrl}/ghost/#/signin`;
 
 console.log('Run tests for USER MANAGEMENT');
@@ -28,24 +31,24 @@ console.log('Run tests for USER MANAGEMENT');
     // Ingresar con las credenciales del usuario
     await page.fill('id=ember8', user)
     await page.fill('id=ember10', password)
-    await page.screenshot({path: './pagina3.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './pagina3.png'})
     await page.click('id=ember12')
     await new Promise(r => setTimeout(r, 7000));
 
 
 
     // En la pagina principal, hacer click en la opcion Staff del sidebar
-    await page.screenshot({path: './loggedin.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './loggedin.png'})
     await page.click('id=ember32')
     await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({path: './staff3.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './staff3.png'})
     // En la pagina de Staff, hacer click en perfil del owner para editarlo
     await page.click('"Owner"')
     await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({path: './owner3.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './owner3.png'})
     await page.fill('id=user-slug', 'mmasferrer')
     await page.fill('id=user-twitter', 'https://twitter.com/msmasferrer')
-    await page.screenshot({path: './updatedData3.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './updatedData3.png'})
   
 
     //Finalizar la prueba

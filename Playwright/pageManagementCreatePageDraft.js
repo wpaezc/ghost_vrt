@@ -10,6 +10,9 @@ const password = config.password
 const url = `${ghostUrl}/ghost/#/signin`;
 console.log('Run tests for PAGE MANAGEMENT');
 
+const titleTest = "pageManagementCreatePageDraft"
+const pathScreenshotsTest =`./screensTest/${titleTest}/`
+
 
 //Función flecha asíncrona
 (async () => {
@@ -30,23 +33,23 @@ console.log('Run tests for PAGE MANAGEMENT');
 
     await page.click('id=ember30');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: './pagina6.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './pagina6.png'})
     // Crear nueva pagina
     await page.click('id=ember142');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: './pagina7.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './pagina7.png'})
     // editar titulo de la pagina
     await page.fill('textarea', 'blabla');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: './pagina8.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './pagina8.png'})
     // salir de la pagina
     await page.click('id=ember328');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: './pagina9.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './pagina9.png'})
 
     await page.click('id=ember328');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: './pagina10.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './pagina10.png'})
 
     //Finalizar la prueba
     console.log('Ok Scenario: Create page draft')
