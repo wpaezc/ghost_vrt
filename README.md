@@ -23,7 +23,7 @@ USUARIO: ```admin@admin.com```
 PASSWORD: ```abcde12345``` 
 
 ### Pasos para correr las pruebas con Playwright
-La version de node recomendada es la ```12.20.1```. Luego de clonar el repositor dar un ```npm install``` y cambiar los siguientes valores del archivo de configuración ```playwright_properties.json``` en caso tenga otro ghostUrl, user o password.
+La version de node recomendada es la ```12.20.1```. Luego de clonar el repositor dar un ```npm install``` y cambiar los siguientes valores del archivo de configuración ```playwright_properties.json``` en caso que tenga otro ghostUrl, user o password.
 ```json
 {
   "ghostUrl": "http://localhost:2368",
@@ -32,11 +32,11 @@ La version de node recomendada es la ```12.20.1```. Luego de clonar el repositor
 }
 ```
 
-Se tomaron dos enfoques, escribir los escenarios solo con ```Playwright``` y tambien escribir algunos escenarios con un test runner ```Jest```. Esto debido a que con Jest nos facilita compilar código Typescript y crear modelos para utilizar el patron Page Object. 
+Se tomaron dos enfoques, escribir los escenarios solo con `Playwright` y `JavaScript ` y  escribir otros 5 escenarios de `Playwright` con `TypeScript` coordinando su integración, en especifico, con el test runner ```Jest```. Esto debido a que Jest  facilita la compilación de código Typescript y permitio desacoplar  la ejecución y reutilización de modelos en diferentes escenarios de prueba,principio del patron Page Object. Simplificada la integracion  entre ```Playwright```, los modelos y los escenarios; Con la ayuda de ```TypeScript``` fue mas facil y rapido implementar el patron Page Object en estos 5 escenarios de prueba. 
 
 Los escenarios se ecuentran en la carpeta _Playwright_ y _Playwright-Jest_
 
-Para ejecutar los 15 escenarios de ***playwright*** se tienen que realizar de forma individual:
+Para ejecutar los 15 escenarios de ***Playwright*** se tienen que realizar de forma individual:
 ```sh
 node Playwright/pageManagementCreatePageDraft.js
 node Playwright/pageManagementPublishPage.js
