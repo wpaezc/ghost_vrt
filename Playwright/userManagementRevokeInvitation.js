@@ -40,11 +40,12 @@ console.log('Run tests for USER MANAGEMENT');
     await page.click('.view-actions')
     await new Promise(r => setTimeout(r, 3000));
     await page.screenshot({path: './invite5.png'})
-    await page.fill('id=new-user-email', 'manuelmasferrer@gmail.com')
+    await page.fill('id=new-user-email', 'example@gmail.com')
     await page.screenshot({path: './filled_invite5.png'})
     await page.click('"Send invitation now"')
     await new Promise(r => setTimeout(r, 7000));
     await page.screenshot({path: './sent_invite5.png'})
+    await page.click('text=Tags')
     await page.click('text=Staff')
     await page.click('"Revoke"')
     await new Promise(r => setTimeout(r, 3000));
