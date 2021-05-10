@@ -7,7 +7,7 @@ const user = config.user
 const password = config.password
 
 const url = `${ghostUrl}/ghost/#/signin`;
-console.log('Run tests for PAGE MANAGEMENT');
+console.log('Run tests for POST MANAGEMENT');
 
 //Función flecha asíncrona
 (async () => {
@@ -15,7 +15,7 @@ console.log('Run tests for PAGE MANAGEMENT');
   for (const browserType of ['chromium']){//, 'firefox', 'webkit']) {
     //Contenido de la prueba
     console.log(browserType+'-------------------------------------------')
-    console.log('Scenario: Publish page')
+    console.log('Scenario: Publish post')
 
     //Creación del objeto browser, el contexto del mismo y el objeto page para manejar la página
     const browser = await playwright[browserType].launch();
