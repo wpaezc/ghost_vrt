@@ -84,15 +84,21 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 |-----|Cambiar meta data del tag|
 |-----|Eliminar un tag sin posts asociados|
 
-- Escenarios de funcionalidad **Manejo de usuarios**
+- Escenarios de funcionalidad **Manejo de usuario**
+
+|Playwright|Kraken|
+|-|-|
+|Actualiza los datos del usuario|Actualiza los datos del usuario|
+|Cambio de password inválido|Cambio de password inválido|
+
+
+- Escenarios de funcionalidad **Invitar nuevos usuarios**
 
 |Playwright|Kraken|
 |-|-|
 |Crear una invitación con un email inválido|Crear una invitación con un email inválido|
 |Crear una invitación con un email válido|Crear una invitación con un email válido|
 |Elimina invitación a un usuario|Elimina invitación a un usuario|
-|Actualiza los datos del usuario|Actualiza los datos del usuario|
-|Cambio de password inválido|Cambio de password inválido|
 
 ### Pruebas ejecutadas
 

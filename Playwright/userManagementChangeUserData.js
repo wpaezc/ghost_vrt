@@ -46,10 +46,7 @@ console.log('Run tests for USER MANAGEMENT');
     await page.fill('id=user-slug', 'mmasferrer')
     await page.fill('id=user-twitter', 'https://twitter.com/msmasferrer')
     await page.screenshot({path: './updatedData3.png'})
-    await page.click('text=Staff')
-    await page.click('"Owner"')
-    await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({path: './updatedOwner3.png'})
+  
 
     //Finalizar la prueba
     console.log('OK Scenario: Change user data')
