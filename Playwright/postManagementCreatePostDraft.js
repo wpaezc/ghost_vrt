@@ -41,7 +41,6 @@ console.log('Run tests for POST MANAGEMENT');
     await page.screenshot({path: pathScreenshotsTest+ './new_post.png'})
     // editar titulo del post
     await editor.fillTitle("Using page objets")
-    await new Promise(r => setTimeout(r, 1000));
     await page.screenshot({path: pathScreenshotsTest+ './editing.png'})
     // // salir del editor
     await navigator.saveAndFinishEditing('posts')

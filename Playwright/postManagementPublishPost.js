@@ -1,5 +1,7 @@
 //Importar Playwright
 const { LoginPage } = require('./models/LoginPage');
+const { Navigate } = require('./models/Navigate');
+const { Editor } = require('./models/Editor');
 const playwright = require('playwright');
 const config = require('../playwright_properties.json');
 
@@ -26,41 +28,33 @@ console.log('Run tests for POST MANAGEMENT');
     const context = await browser.newContext();
     const page = await context.newPage();
     const loginPage = new LoginPage(page, url, user, password);
+    const navigator = new Navigate(page);
+    const editor = new Editor(page);
     await loginPage.enter_ghost()
     
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
-    await page.click('id=ember28');
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina6.png'})
-    // Crear nuevo post
-    await page.click('text= New post');
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina7.png'})
+    await navigator.clickOnSidebar('posts')
+    await page.screenshot({path: pathScreenshotsTest+ './visit_posts.png'})
+    // Crear nueva post
+    await navigator.clickOnNewEditor('post')
+    await page.screenshot({path: pathScreenshotsTest+ './new_post.png'})
     // editar titulo del post
-    await page.fill('textarea', 'blabla');
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina8.png'})
-
-    await page.click("button");
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina9.png'})
-    // Publicar el post
-    await page.click("section .gh-publishmenu-trigger");
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina10.png'})
-
-    await page.click("footer .gh-publishmenu-button");
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina11.png'})
+    await editor.fillTitle("Publish on editor")
+    await page.screenshot({path: pathScreenshotsTest+ './editing.png'})
+ 
+    await editor.triggerSave()
+    await editor.openPublishPopup()
+    await page.screenshot({path: pathScreenshotsTest+ './open_publish_popup.png'})
+    await editor.publish()
+    await page.screenshot({path: pathScreenshotsTest+ './finish_publishing.png'})
 
     // // salir de la post
-    await page.click('button');
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina12.png'})
+    await navigator.saveAndFinishEditing('posts')
+    await page.screenshot({path: pathScreenshotsTest+ './returning_and_saving.png'})
 
     await page.click('section .ember-view');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina13.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './end.png'})
 
     //Finalizar la prueba
     console.log('Ok Scenario: Publish post')
