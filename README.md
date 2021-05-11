@@ -36,6 +36,8 @@ Se tomaron dos enfoques, escribir los escenarios solo con `Playwright` y `JavaSc
 
 Los escenarios se ecuentran en la carpeta _Playwright_ y _Playwright-Jest_
 
+Los screenshots se generan en la carpeta _screensTest/nameOfScenario_
+
 Para ejecutar los 15 escenarios de ***Playwright*** se tienen que realizar de forma individual:
 ```sh
 node Playwright/pageManagementCreatePageDraft.js
