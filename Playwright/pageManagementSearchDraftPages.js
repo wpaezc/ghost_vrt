@@ -1,5 +1,7 @@
 //Importar Playwright
 const { LoginPage } = require('./models/LoginPage');
+const { Navigate } = require('./models/Navigate');
+
 const playwright = require('playwright');
 const config = require('../playwright_properties.json');
 
@@ -26,12 +28,13 @@ console.log('Run tests for PAGE MANAGEMENT');
     const context = await browser.newContext();
     const page = await context.newPage();
     const loginPage = new LoginPage(page, url, user, password);
+    const navigator = new Navigate(page);
     await loginPage.enter_ghost()
     
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
-    await page.click('id=ember30');
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina6.png'})
+    await navigator.clickOnSidebar('pages')
+    await page.screenshot({path: pathScreenshotsTest+ './visit_pages.png'})
+
     // Buscar todo los bosquejos de paginas
     await page.click('text=All Pages ');
     await new Promise(r => setTimeout(r, 1000));
