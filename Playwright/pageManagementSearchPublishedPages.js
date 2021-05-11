@@ -26,7 +26,7 @@ console.log('Run tests for PAGE MANAGEMENT');
     const context = await browser.newContext();
     const page = await context.newPage();
     const loginPage = new LoginPage(page, url, user, password);
-    loginPage.enter_ghost()
+    await loginPage.enter_ghost()
     
     await page.click('id=ember30');
     await new Promise(r => setTimeout(r, 1000));

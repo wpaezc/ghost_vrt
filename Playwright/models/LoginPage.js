@@ -10,6 +10,7 @@ class LoginPage {
     await this.page.fill('id=ember8', this.user)
     await this.page.fill('id=ember10', this.password);
     await this.page.click('id=ember12');
+    await new Promise(r => setTimeout(r, 1000));
   }
 }
 module.exports = { LoginPage };

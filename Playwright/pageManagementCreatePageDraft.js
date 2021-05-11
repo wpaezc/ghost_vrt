@@ -1,4 +1,6 @@
 const { LoginPage } = require('./models/LoginPage');
+const { Navigate } = require('./models/Navigate');
+const { Editor } = require('./models/Editor');
 //Importar Playwright
 const playwright = require('playwright');
 const config = require('../playwright_properties.json');
@@ -26,29 +28,30 @@ console.log('Run tests for PAGE MANAGEMENT');
     const context = await browser.newContext();
     const page = await context.newPage();
     const loginPage = new LoginPage(page, url, user, password);
+    const navigator = new Navigate(page);
+    const editor = new Editor(page);
     
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
-    loginPage.enter_ghost()
-
-    await page.click('id=ember30');
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina6.png'})
+    await loginPage.enter_ghost()
+    await page.screenshot({path: pathScreenshotsTest+ './good_login.png'})
+    
+    //Abrir la URL a probar en la página y cargar el proyecto en una SPA
+    await navigator.clickOnSidebar('pages')
+    await page.screenshot({path: pathScreenshotsTest+ './visit_pages.png'})
     // Crear nueva pagina
-    await page.click('id=ember142');
+    await navigator.clickOnNewEditor('page')
+    await page.screenshot({path: pathScreenshotsTest+ './new_page.png'})
+    // editar titulo del pagina
+    await editor.fillTitle("Using page objets")
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina7.png'})
-    // editar titulo de la pagina
-    await page.fill('textarea', 'blabla');
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina8.png'})
-    // salir de la pagina
-    await page.click('id=ember328');
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina9.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './editing.png'})
+    // // salir del editor
+    await navigator.saveAndFinishEditing('pages')
+    await page.screenshot({path: pathScreenshotsTest+ './returning_and_saving.png'})
 
-    await page.click('id=ember328');
+    await page.click('section .ember-view');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina10.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './end_state.png'})
 
     //Finalizar la prueba
     console.log('Ok Scenario: Create page draft')

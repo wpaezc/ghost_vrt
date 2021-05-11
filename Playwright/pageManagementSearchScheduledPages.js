@@ -26,7 +26,7 @@ console.log('Run tests for PAGE MANAGEMENT');
     const context = await browser.newContext();
     const page = await context.newPage();
     const loginPage = new LoginPage(page, url, user, password);
-    loginPage.enter_ghost()
+    await loginPage.enter_ghost()
 
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
     await page.click('id=ember30');

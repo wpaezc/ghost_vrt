@@ -1,5 +1,7 @@
 //Importar Playwright
 const { LoginPage } = require('./models/LoginPage');
+const { Navigate } = require('./models/Navigate');
+const { Editor } = require('./models/Editor');
 const playwright = require('playwright');
 const config = require('../playwright_properties.json');
 
@@ -26,28 +28,28 @@ console.log('Run tests for POST MANAGEMENT');
     const context = await browser.newContext();
     const page = await context.newPage();
     const loginPage = new LoginPage(page, url, user, password);
-    loginPage.enter_ghost()
+    const navigator = new Navigate(page);
+    const editor = new Editor(page);
+    await loginPage.enter_ghost()
+    await page.screenshot({path: pathScreenshotsTest+ './good_login.png'})
     
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
-    await page.click('id=ember28');
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina6.png'})
+    await navigator.clickOnSidebar('posts')
+    await page.screenshot({path: pathScreenshotsTest+ './visit_posts.png'})
     // Crear nueva post
-    await page.click('text=New post');
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina7.png'})
+    await navigator.clickOnNewEditor('post')
+    await page.screenshot({path: pathScreenshotsTest+ './new_post.png'})
     // editar titulo del post
-    await page.fill('textarea', 'blabla');
+    await editor.fillTitle("Using page objets")
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina8.png'})
-    // // salir del post
-    await page.click('button');
-    await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina9.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './editing.png'})
+    // // salir del editor
+    await navigator.saveAndFinishEditing('posts')
+    await page.screenshot({path: pathScreenshotsTest+ './returning_and_saving.png'})
 
     await page.click('section .ember-view');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina10.png'})
+    await page.screenshot({path: pathScreenshotsTest+ './end_state.png'})
 
     //Finalizar la prueba
     console.log('Ok Scenario: Create post draft')
