@@ -5,9 +5,11 @@ const config = require('../playwright_properties.json');
 const ghostUrl = config.ghostUrl
 const user = config.user
 const password = config.password
+const version= `${config.version}_`
+const nameScreenPath=config.nameScreenPath
 
 const titleTest = "userManagementRevokeInvitation"
-const pathScreenshotsTest =`./screensTest/${titleTest}/`
+const pathScreenshotsTest =`./${nameScreenPath}/${titleTest}/`
 
 const url = `${ghostUrl}/ghost/#/signin`;
 
@@ -31,28 +33,28 @@ console.log('Run tests for USER MANAGEMENT');
     // Ingresar con las credenciales del usuario
     await page.fill('id=ember8', user)
     await page.fill('id=ember10', password)
-    await page.screenshot({path: './pagina5.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}pagina5.png`})
     await page.click('id=ember12')
     await new Promise(r => setTimeout(r, 7000));
     // En la pagina principal, hacer click en la opcion Staff del sidebar
-    await page.screenshot({path: './loggedin5.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}loggedin5.png`})
     await page.click('id=ember32')
     await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({path: './staff5.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}staff5.png`})
     // En la pagina de Staff, hacer click en enviar invitacion  y llenar sus credenciales
     await page.click('.view-actions')
     await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({path: './invite5.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}invite5.png`})
     await page.fill('id=new-user-email', 'example@gmail.com')
-    await page.screenshot({path: './filled_invite5.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}filled_invite5.png`})
     await page.click('"Send invitation now"')
     await new Promise(r => setTimeout(r, 7000));
-    await page.screenshot({path: './sent_invite5.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}sent_invite5.png`})
     await page.click('text=Tags')
     await page.click('text=Staff')
     await page.click('"Revoke"')
     await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({path: './revoked_invite5.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}revoked_invite5.png`})
     //Finalizar la prueba
     console.log('OK Scenario: Revokes invitation');
     await browser.close();

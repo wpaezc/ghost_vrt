@@ -8,9 +8,11 @@ const config = require('../playwright_properties.json');
 const ghostUrl = config.ghostUrl
 const user = config.user
 const password = config.password
+const version= `${config.version}_`
+const nameScreenPath=config.nameScreenPath
 
 const titleTest = "pageManagementSearchDraftPages"
-const pathScreenshotsTest =`./screensTest/${titleTest}/`
+const pathScreenshotsTest =`./${nameScreenPath}/${titleTest}/`
 
 const url = `${ghostUrl}/ghost/#/signin`;
 console.log('Run tests for PAGE MANAGEMENT');
@@ -33,16 +35,16 @@ console.log('Run tests for PAGE MANAGEMENT');
     
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
     await navigator.clickOnSidebar('pages')
-    await page.screenshot({path: pathScreenshotsTest+ './visit_pages.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}visit_pages.png`})
 
     // Buscar todo los bosquejos de paginas
     await page.click('text=All Pages ');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina7.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}pagina7.png`})
 
     await page.click('text=Draft Pages ');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './pagina8.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}pagina8.png`})
 
     //Finalizar la prueba
     console.log('Ok Scenario: Search draf pages')
