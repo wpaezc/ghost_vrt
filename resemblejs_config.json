@@ -1,0 +1,21 @@
+{
+  "kraken_scenarios":[
+    "tag_management_delete_tag",
+    "user_management_invalid_invitation"
+  ],
+  "options":{
+    "output": {
+      "errorColor": {
+        "red": 255,
+        "green": 0,
+        "blue": 255
+      },
+      "errorType": "movement",
+      "largeImageThreshold": 1200,
+      "useCrossOrigin": false,
+      "outputDiff": true
+    },
+    "scaleToSameSize": true,
+    "ignore": "antialiasing"
+  }
+}
