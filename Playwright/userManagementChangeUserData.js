@@ -1,3 +1,6 @@
+const { LoginPage } = require('./models/LoginPage');
+const { Navigate } = require('./models/Navigate');
+const { Editor } = require('./models/Editor');
 //Importar Playwright
 const playwright = require('playwright');
 const config = require('../playwright_properties.json');
@@ -12,8 +15,8 @@ const titleTest = "userManagementChangeUserData"
 const pathScreenshotsTest =`./${nameScreenPath}/${titleTest}/`
 
 const url = `${ghostUrl}/ghost/#/signin`;
-
 console.log('Run tests for USER MANAGEMENT');
+
 //Función flecha asíncrona
 (async () => {
   //Definir los navegadores en los que se quiere hacer la prueba
@@ -26,33 +29,30 @@ console.log('Run tests for USER MANAGEMENT');
     const browser = await playwright[browserType].launch();
     const context = await browser.newContext();
     const page = await context.newPage();
-    
+    const loginPage = new LoginPage(page, url, user, password);
+    const navigator = new Navigate(page);
+    const editor = new Editor(page);
+
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
-    await page.goto(url);
-    await new Promise(r => setTimeout(r, 7000));
-    // Ingresar con las credenciales del usuario
-    await page.fill('id=ember8', user)
-    await page.fill('id=ember10', password)
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}pagina3.png`})
-    await page.click('id=ember12')
-    await new Promise(r => setTimeout(r, 7000));
-
-
-
-    // En la pagina principal, hacer click en la opcion Staff del sidebar
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}loggedin.png`})
-    await page.click('id=ember32')
-    await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}staff3.png`})
+    await loginPage.enter_ghost();
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_successfulLogin.png`});
+    
+    //Desplegar los detalles del Staff
+    await navigator.clickOnSidebar('staff');
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_displayStaff.png`});
+    
     // En la pagina de Staff, hacer click en perfil del owner para editarlo
-    await page.click('"Owner"')
-    await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}owner3.png`})
-    await page.fill('id=user-slug', 'mmasferrer'),
-    await page.fill('id=user-twitter', 'https://twitter.com/msmasferrer')
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}updatedData3.png`})
+    await page.click('"Owner"');
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_originalOwnerDetail.png`});
+   
+    // Modificar el slug del owner
+    await page.fill('id=user-slug', 'admin');
+    await page.fill('id=user-location', 'Colombia');
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_modifiedOwnerDetail.png`});
   
-
+    // Guardar modificaciones
+    await page.click('section:has-text("Save")');
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_savedOwnerDetail.png`});
     //Finalizar la prueba
     console.log('OK Scenario: Change user data')
     await browser.close();

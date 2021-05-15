@@ -1,3 +1,6 @@
+const { LoginPage } = require('./models/LoginPage');
+const { Navigate } = require('./models/Navigate');
+const { Editor } = require('./models/Editor');
 //Importar Playwright
 const playwright = require('playwright');
 const config = require('../playwright_properties.json');
@@ -20,43 +23,39 @@ console.log('Run tests for USER MANAGEMENT');
   for (const browserType of ['chromium']){//, 'firefox', 'webkit']) {
     //Contenido de la prueba
     console.log(browserType+'-------------------------------------------')
-    console.log('Scenario: Invites staff')
+    console.log('Scenario: Sends invitation')
 
     //Creación del objeto browser, el contexto del mismo y el objeto page para manejar la página
     const browser = await playwright[browserType].launch();
     const context = await browser.newContext();
     const page = await context.newPage();
+    const loginPage = new LoginPage(page, url, user, password);
+    const navigator = new Navigate(page);
+    const editor = new Editor(page);
     
-    //Abrir la URL a probar en la página y cargar el proyecto en una SPA
-    await page.goto(url);
-    await new Promise(r => setTimeout(r, 7000));
-    // Ingresar con las credenciales del usuario 
-    await page.fill('id=ember8', user)
-    await page.fill('id=ember10', password)
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}pagina1.png`})
-    await page.click('id=ember12')
-    await new Promise(r => setTimeout(r, 7000));
+    await loginPage.enter_ghost();
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_1successfulLogin.png`});
+
     // En la pagina principal, hacer click en la opcion Staff del sidebar
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}loggedin1.png`})
-    await page.click('id=ember32')
+    await page.click('text=Staff')
     await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}staff1.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_2displayStaff.png`});
     // En la pagina de Staff, hacer click en enviar invitacion  y llenar sus credenciales
-    await page.click('.view-actions')
-    await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}invite1.png`})
-    await page.fill('id=new-user-email', 'newuser@gmail.com')
-    await page.selectOption('id=new-user-role', "608cecca2e33ef75a3b9cee1")
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}filled_invite1.png`})
+    await page.click('span:has-text("Invite people")');
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_3inviteUserForm.png`});
+
+    await page.fill('id=new-user-email', 'example@gmail.com')
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_4filledInvitation.png`})
     await page.click('"Send invitation now"')
     await new Promise(r => setTimeout(r, 7000));
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}sent_invite1.png`})
-
-    //Finalizar la prueba y cancelar la invitación enviada
-    console.log('OK Scenario: Invites staff')
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_5sentInvitation.png`})
     await page.click('text=Tags')
     await page.click('text=Staff')
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_6staffPageWithPendingInvitation.png`});
+    //Finalizar la prueba
     await page.click('"Revoke"')
+
+    console.log('OK Scenario: Sends invitation');
     await browser.close();
   }
   return;

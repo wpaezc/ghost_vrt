@@ -1,3 +1,6 @@
+const { LoginPage } = require('./models/LoginPage');
+const { Navigate } = require('./models/Navigate');
+const { Editor } = require('./models/Editor');
 //Importar Playwright
 const playwright = require('playwright');
 const config = require('../playwright_properties.json');
@@ -10,7 +13,6 @@ const nameScreenPath=config.nameScreenPath
 
 const titleTest = "userManagementInvalidInvitation"
 const pathScreenshotsTest =`./${nameScreenPath}/${titleTest}/`
-
 
 const url = `${ghostUrl}/ghost/#/signin`;
 
@@ -27,30 +29,26 @@ console.log('Run tests for USER MANAGEMENT');
     const browser = await playwright[browserType].launch();
     const context = await browser.newContext();
     const page = await context.newPage();
-    
-    //Abrir la URL a probar en la página y cargar el proyecto en una SPA
-    await page.goto(url);
-    await new Promise(r => setTimeout(r, 7000));
-    // Ingresar con las credenciales del usuario
-    await page.fill('id=ember8', user)
-    await page.fill('id=ember10', password)
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}pagina2.png`})
-    await page.click('id=ember12')
-    await new Promise(r => setTimeout(r, 7000));
+    const loginPage = new LoginPage(page, url, user, password);
+    const navigator = new Navigate(page);
+    const editor = new Editor(page);
+
+    await loginPage.enter_ghost();
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_1successfulLogin.png`});
+
     // En la pagina principal, hacer click en la opcion Staff del sidebar
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}loggedin2.png`})
-    await page.click('id=ember32')
+    await page.click('text=Staff')
     await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}staff2.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_2displayStaff.png`});
     // En la pagina de Staff, hacer click en enviar invitacion  y llenar sus credenciales
-    await page.click('.view-actions')
-    await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}invite2.png`})
+    await page.click('span:has-text("Invite people")');
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_3inviteUserForm.png`});
+
+    // Crear invitacion con direccion de email erronea
     await page.fill('id=new-user-email', 'example@gmail')
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}filled_invite2.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_4filledInvitation.png`})
     await page.click('"Send invitation now"')
-    await new Promise(r => setTimeout(r, 7000));
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}failed_invite2.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_5invalidEmailWarning.png`})
 
     //Finalizar la prueba
     console.log('OK Scenario: Invalid Invitation')
