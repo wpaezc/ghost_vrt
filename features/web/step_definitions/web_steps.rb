@@ -257,4 +257,25 @@ if ENV["ADB_DEVICE_ARG"].nil?
     text = @driver.find_element(:css, ".gh-alert-red").text
     raise "Fail test" unless text.match(message)
   end
+
+  AfterStep do |_scenario, step|
+    version = ""
+    if ENV["PROPERTIES_PATH"]
+      file = open(ENV["PROPERTIES_PATH"])
+      content = file.read
+      file.close
+      properties = JSON.parse(content)
+      version = properties["version"]
+    end
+
+    file_name = step.location.file
+    name = file_name.split("/").last.split('.').first
+    step_name = step.text.gsub(/[^0-9a-z]/i, '_')
+    path = "./kraken_screenshots/#{name}/#{version}_#{step_name}.png"
+    dirname = File.dirname(path)
+    unless File.directory?(dirname)
+      FileUtils.mkdir_p(dirname)
+    end
+    @driver.save_screenshot(path)
+  end
 end

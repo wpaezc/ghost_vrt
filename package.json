@@ -29,5 +29,8 @@
       "json",
       "node"
     ]
+  },
+  "dependencies": {
+    "resemblejs": "^3.2.5"
   }
 }
