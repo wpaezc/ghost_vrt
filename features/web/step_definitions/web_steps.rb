@@ -59,6 +59,8 @@ if ENV["ADB_DEVICE_ARG"].nil?
   end
 
   When(/^I fill tag form with meta title "([^\"]*)" and meta description "([^\"]*)"$/) do |title, description|
+    @driver.find_elements(:css, ".bg-grouped-table button.gh-btn")[0].click
+    sleep 1
     @driver.find_element(:name, 'metaTitle').send_keys(title)
     @driver.find_element(:name, 'metaDescription').send_keys(description)
     sleep 1
@@ -209,6 +211,9 @@ if ENV["ADB_DEVICE_ARG"].nil?
   end
 
   Then(/^I should see slug tag engine "([^\"]*)" updated with "([^\"]*)"$/) do |ghost_url, slug|
+    @driver.find_elements(:css, ".bg-grouped-table button.gh-btn")[0].click
+
+    sleep 1
     text = @driver.find_element(:css, ".seo-preview-link").text
 
     raise "Fail test" unless text.match(ghost_url)
