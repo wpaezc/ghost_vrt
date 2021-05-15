@@ -46,7 +46,7 @@ console.log('Run tests for USER MANAGEMENT');
     await page.click('"Owner"');
     await page.screenshot({path: pathScreenshotsTest+ `./${version}_originalOwnerDetail.png`});
     
-    await page.fill('id=user-password-old', 'admin12345')
+    await page.fill('id=user-password-old', password)
     await page.fill('id=user-password-new', 'admin12346')
     await page.fill('id=user-new-password-verification', 'admin123456')
     await page.click('"Change Password"')

@@ -35,24 +35,24 @@ console.log('Run tests for USER MANAGEMENT');
 
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
     await loginPage.enter_ghost();
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}_successfulLogin.png`});
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_1successfulLogin.png`});
     
     //Desplegar los detalles del Staff
     await navigator.clickOnSidebar('staff');
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}_displayStaff.png`});
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_2displayStaff.png`});
     
     // En la pagina de Staff, hacer click en perfil del owner para editarlo
     await page.click('"Owner"');
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}_originalOwnerDetail.png`});
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_3originalOwnerDetail.png`});
    
     // Modificar el slug del owner
     await page.fill('id=user-slug', 'admin');
     await page.fill('id=user-location', 'Colombia');
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}_modifiedOwnerDetail.png`});
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_4modifiedOwnerDetail.png`});
   
     // Guardar modificaciones
     await page.click('section:has-text("Save")');
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}_savedOwnerDetail.png`});
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_5savedOwnerDetail.png`});
     //Finalizar la prueba
     console.log('OK Scenario: Change user data')
     await browser.close();
