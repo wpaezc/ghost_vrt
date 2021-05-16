@@ -1,4 +1,4 @@
-# Pruebas E2E con Playwright y Kraken
+# Pruebas de Regresión
 ## Integrantes
 |Nombres|Email|
 |-------|------|
@@ -7,38 +7,82 @@
 |Christtian Alfredo Manzo Parra|ca.manzo973@uniandes.edu.co|
 |Wenceslao Crhistopher Paez Chavez|w.paezc@uniandes.edu.co|
 
-## Pros y contras de las herramientas utilizadas
 
-El reporte se encuentra en la WIKI del proyecto: [Link](https://github.com/wpaezc/ghost_e2e/wiki/Evaluaci%C3%B3n-de-Herramientas)
+## Pros y contras de las herramienta utilizada (ResembleJs)
 
-## Configuración general
-Para poder correr estas pruebas se requiere ya tener instalado el aplicativo **GHOST** en su versión **3.3.0**. 
+El reporte se encuentra en la WIKI del proyecto: [Link](hhttps://github.com/wpaezc/ghost_regresion/wiki/Evaluaci%C3%B3n-de-Herramienta)
 
-Se necesita conocer el **URL** donde esta funcionado GHOST, así también es necesario contar un **usuario administrador** y un **password** que deben ser ingresados en los archivos de configuración de Playwright y el archivo de configuración de Kraken. 
+## 1. Pasos para tomar screenshots en la versión Ghost 3.30
+Clonar el repositorio y cambiar el código al tag v1: ```git checkout tags/v1```
+La version de node recomendada es la 12.20.1. 
 
-Para ambas herramientas se tiene por defecto los siguientes valores: 
+### 1.1 Tomar screenshots con Playwright
+Dar un npm install y cambiar los siguientes valores en el archivo de configuración _playwright_properties.json_ en caso que tenga otro ghostUrl, user o password. Es importante mantener en este archivo los valores de "version" v1 y "nameScreenPath" para generar correctamente los nombres del screenshot.
 
-URL: ```http://localhost:2368/``` 
-USUARIO: ```admin@admin.com```
-PASSWORD: ```abcde12345``` 
-
-### Pasos para correr las pruebas con Playwright
-La version de node recomendada es la ```12.20.1```. Luego de clonar el repositor dar un ```npm install``` y cambiar los siguientes valores del archivo de configuración ```playwright_properties.json``` en caso que tenga otro ghostUrl, user o password.
 ```json
 {
   "ghostUrl": "http://localhost:2368",
   "user": "admin@admin.com",
-  "password": "abcde12345"
+  "password": "abcde12345",
+  "version":"v1",
+  "nameScreenPath":"playwright_screenshots"
 }
 ```
-
-Se tomaron dos enfoques, escribir los escenarios solo con `Playwright` y `JavaScript ` y  escribir otros 5 escenarios de `Playwright` con `TypeScript` coordinando su integración, en especifico, con el test runner ```Jest```. Esto debido a que Jest  facilita la compilación de código Typescript y permitio desacoplar  la ejecución y reutilización de modelos en diferentes escenarios de prueba,principio del patron Page Object. Simplificada la integracion  entre ```Playwright```, los modelos y los escenarios; Con la ayuda de ```TypeScript``` fue mas facil y rapido implementar el patron Page Object en estos 5 escenarios de prueba. 
-
-Los escenarios se ecuentran en la carpeta _Playwright_ y _Playwright-Jest_
-
-Los screenshots se generan en la carpeta _screensTest/nameOfScenario_
-
 Para ejecutar los 15 escenarios de ***Playwright*** se tienen que realizar de forma individual:
+```sh
+node Playwright/pageManagementCreatePageDraft.js
+node Playwright/pageManagementPublishPage.js
+node Playwright/pageManagementSearchDraftPages.js
+node Playwright/pageManagementSearchPublishedPages.js
+node Playwright/pageManagementSearchScheduledPages.js
+
+node Playwright/postManagementCreatePostDraft.js
+node Playwright/postManagementPublishPost.js
+node Playwright/postManagementSearchDraftPosts.js
+node Playwright/postManagementSearchPublishedPosts.js
+node Playwright/postManagementSearchScheduledPosts.js
+
+node Playwright/userManagementChangeUserData.js
+node Playwright/userManagementInvalidInvitation.js
+node Playwright/userManagementInviteStaff.js
+node Playwright/userManagementRevokeInvitation.js
+node Playwright/userManagementInvalidPassword.js
+```
+Para ejecutar ejecutar los 5 escenarios faltantes ***playwright-jest*** usar el comando: ```npm test```
+
+Al final se crearán 20 carpetas en el folder **_./playwright_screenshots_**. Los screenshots de los 20 escenarios serán creados en el siguiente formato **_./playwright_screenshots/featureScenario/v1_nombre_del_step.png**
+
+### 1.2 Tomar screenshots con Kraken
+En caso no tenga kraken-mobile instalado, se recomienda instalar la version de ruby ```2.6.7```, ejecutar un ```gem install bundler``` y luego ```bundle install```  
+
+Si ya tiene instalado kraken-mobile abrir el archivo ```kraken_properties.json``` y configuar los valores de _GHOST_URL_, _USER_ o _PASSWORD_ en caso tenga otros valores. Es importante mantener en este archivo el valor "version" v1
+
+```json
+{
+  "version": "v1",
+  "@user1": {
+    "GHOST_URL": "http://localhost:2368",
+    "USER": "admin@admin.com",
+    "PASSWORD": "abcde12345"
+  }
+}
+```
+Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --properties=kraken_properties.json```
+
+Al final se crearán 20 carpetas en el folder **_./kraken_screenshots_**. Los screenshots de los 20 escenarios serán creados en el siguiente formato **_./kraken_screenshots/feature_scenario/v1_nombre_del_step.png**
+
+
+
+
+
+
+## Pasos para tomar screenshots en la versión Ghost 3.42.5
+### Playwright
+### Kraken
+ 
+
+### Pasos para correr las pruebas con Playwright
+
 ```sh
 node Playwright/pageManagementCreatePageDraft.js
 node Playwright/pageManagementPublishPage.js
