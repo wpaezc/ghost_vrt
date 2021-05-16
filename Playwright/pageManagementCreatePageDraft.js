@@ -35,25 +35,25 @@ console.log('Run tests for PAGE MANAGEMENT');
     
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
     await loginPage.enter_ghost()
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}good_login.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_1good_login.png`})
     
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
     await navigator.clickOnSidebar('pages')
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}visit_pages.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_2visit_pages.png`})
     // Crear nueva pagina
     await navigator.clickOnNewEditor('page')
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}new_page.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_3new_page.png`})
     // editar titulo del pagina
     await editor.fillTitle("Using page objets")
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}editing.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_4editing.png`})
     // // salir del editor
     await navigator.saveAndFinishEditing('pages')
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}returning_and_saving.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_5returning_and_saving.png`})
 
     await page.click('section .ember-view');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}end_state.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_6end_state.png`})
 
     //Finalizar la prueba
     console.log('Ok Scenario: Create page draft')

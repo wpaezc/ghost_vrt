@@ -34,16 +34,16 @@ console.log('Run tests for POST MANAGEMENT');
     
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
     await navigator.clickOnSidebar('posts')
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}visit_posts.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_1visit_posts.png`})
 
     // // Buscar todo los bosquejos de posts
     await page.click('text=All Posts ');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}pagina7.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_2click_all_posts.png`})
 
     await page.click('text=Published Posts ');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}pagina8.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}3_see_published_posts.png`})
 
     //Finalizar la prueba
     console.log('Ok Scenario: Search published posts')

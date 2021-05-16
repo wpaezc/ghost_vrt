@@ -35,16 +35,16 @@ console.log('Run tests for PAGE MANAGEMENT');
 
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
     await navigator.clickOnSidebar('pages')
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}visit_pages.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_1visit_pages.png`})
 
     // Buscar todo las paginas agendadas
     await page.click('text=All Pages ');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}pagina7.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_2click_all_pages.png`})
 
     await page.click('text=Scheduled Pages ');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}pagina8.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_3see_scheduled_pages.png`})
 
     //Finalizar la prueba
     console.log('Ok Scenario: Search for scheduled pages')
