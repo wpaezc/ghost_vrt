@@ -1,15 +1,18 @@
 {
   "url": "http://localhost:2368",
   "kraken_scenarios": [
+    "post_management_create_post_published_now",
+    "post_management_create_post_published_on_future",
     "tag_management_delete_tag",
-    "user_management_invalid_invitation"
+    "tag_management_change_tag_meta_data",
+    "page_management_unpublish_published_page"
   ],
   "playwright_scenarios": [
-    "userManagementChangeUserData",
     "userManagementInvalidInvitation",
     "userManagementInvalidPassword",
-    "userManagementInviteStaff",
-    "userManagementRevokeInvitation"
+    "tagManagementEditTagName",
+    "pageManagementCreatePageDraft",
+    "postManagementCreatePostDraft"
   ],
   "options":{
     "output": {
