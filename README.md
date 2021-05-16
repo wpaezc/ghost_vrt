@@ -10,7 +10,7 @@
 
 ## 2. Pros y contras de la herramienta utilizada (ResembleJs)
 
-El reporte se encuentra en la WIKI del proyecto: [Link](hhttps://github.com/wpaezc/ghost_regresion/wiki/Evaluaci%C3%B3n-de-Herramienta)
+El reporte se encuentra en la WIKI del proyecto: [Link](https://github.com/wpaezc/ghost_regresion/wiki/Evaluaci%C3%B3n-de-Herramienta)
 
 ## 3. Resultados finales
 
