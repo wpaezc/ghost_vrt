@@ -1,8 +1,15 @@
 {
   "url": "http://localhost:2368",
-  "kraken_scenarios":[
+  "kraken_scenarios": [
     "tag_management_delete_tag",
     "user_management_invalid_invitation"
+  ],
+  "playwright_scenarios": [
+    "userManagementChangeUserData",
+    "userManagementInvalidInvitation",
+    "userManagementInvalidPassword",
+    "userManagementInviteStaff",
+    "userManagementRevokeInvitation"
   ],
   "options":{
     "output": {

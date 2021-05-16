@@ -4,13 +4,76 @@ const fs = require('fs');
 
 const {
   options,
-  kraken_scenarios
+  kraken_scenarios,
+  playwright_scenarios
 } = config;
 
 async function executeTest(){
   let resultInfo = {}
   let datetime = new Date().toISOString().replace(/:/g,".");
 
+  for(scenario_index in playwright_scenarios) {
+    let scenario = playwright_scenarios[scenario_index]
+
+    if (!fs.existsSync(`./resemblejs_reports/${scenario}`)){
+      fs.mkdirSync(`./resemblejs_reports/${scenario}`, { recursive: true });
+    }
+
+    let screenshots_folder = `./playwright_screenshots/${scenario}`
+    const files = await fs.promises.readdir(screenshots_folder);
+
+    let pairs = []
+
+    let v1_files = files.filter(file => file.match(/^v1_/g))
+
+    v1_files.forEach((v1_file) => {
+      v2_file = v1_file.replace("v1", "v2")
+      if(files.includes(v2_file)) {
+        pairs.push([v1_file, v2_file])
+      }
+    })
+
+    let resultInfo = {}
+    let steps = []
+
+    for(pair in pairs) {
+      const data = await compareImages(
+        fs.readFileSync(`./playwright_screenshots/${scenario}/${pairs[pair][0]}`),
+        fs.readFileSync(`./playwright_screenshots/${scenario}/${pairs[pair][1]}`),
+        options
+      );
+
+      let compare_name = pairs[pair][0].replace("v1", "compare_")
+
+      fs.copyFileSync(`./playwright_screenshots/${scenario}/${pairs[pair][0]}`, `./resemblejs_reports/${scenario}/${pairs[pair][0]}`)
+      fs.copyFileSync(`./playwright_screenshots/${scenario}/${pairs[pair][1]}`, `./resemblejs_reports/${scenario}/${pairs[pair][1]}`)
+      fs.copyFileSync(`./index.css`, `./resemblejs_reports/${scenario}/index.css`)
+      fs.writeFileSync(`./resemblejs_reports/${scenario}/${compare_name}`, data.getBuffer());
+
+
+      let step_name = pairs[pair][0].replace('v1_', '').replace('.png', '')
+      steps.push(step_name)
+
+      resultInfo[step_name] = {
+        isSameDimensions: data.isSameDimensions,
+        dimensionDifference: data.dimensionDifference,
+        rawMisMatchPercentage: data.rawMisMatchPercentage,
+        misMatchPercentage: data.misMatchPercentage,
+        diffBounds: data.diffBounds,
+        analysisTime: data.analysisTime
+      }
+    }
+
+
+    let name_split = scenario.split("_")
+    let feature_name = name_split.slice(0,2).join(" ").toLowerCase()
+    let scenario_name = name_split.slice(2,100).join(" ").toLowerCase()
+
+    fs.writeFileSync(
+      `./resemblejs_reports/${scenario}/report.html`,
+      createReport('playwright', feature_name, scenario_name, datetime, resultInfo, steps)
+    );
+  }
  
   for(scenario_index in kraken_scenarios) {
     let scenario = kraken_scenarios[scenario_index]
