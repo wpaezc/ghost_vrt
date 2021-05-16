@@ -9,7 +9,7 @@ export class SelectTag {
         txtNameTag: string = "input[name='name']";
         txtSlugTag: string = "input[name='slug']";
         IDnameTag : string = "#tag-name";
-        btnSavedTag: string = "text='Saved'";
+        btnSavedTag: string = "text='Save'";
         btnDeleteTag: string = "text ='Delete tag'"; 
 
     async clickTag(nameTag:string){
