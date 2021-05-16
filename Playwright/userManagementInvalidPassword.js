@@ -35,22 +35,23 @@ console.log('Run tests for USER MANAGEMENT');
     
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
     await loginPage.enter_ghost();
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}_successfulLogin.png`});
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_1successfulLogin.png`});
     
     //Desplegar los detalles del Staff
     await navigator.clickOnSidebar('staff');
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}_display_staff.png`});
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_2display_staff.png`});
 
     // En la pagina de Staff, hacer click en "Invite people"
     // En la pagina de Staff, hacer click en perfil del owner para editarlo
     await page.click('"Owner"');
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}_originalOwnerDetail.png`});
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_3originalOwnerDetail.png`});
     
     await page.fill('id=user-password-old', password)
     await page.fill('id=user-password-new', 'admin12346')
     await page.fill('id=user-new-password-verification', 'admin123456')
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_4passwordEntered.png`})
     await page.click('"Change Password"')
-    await page.screenshot({path: pathScreenshotsTest+ `./${version}_passwordsDontMatch.png`})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_5passwordsDontMatch.png`})
 
     //Finalizar la prueba
     console.log('Ok Scenario:  Change password with invalid values')

@@ -53,6 +53,7 @@ console.log('Run tests for USER MANAGEMENT');
     await page.click('text=Staff')
     await page.screenshot({path: pathScreenshotsTest+ `./${version}_6staffPageWithPendingInvitation.png`});
     await page.click('"Revoke"')
+    await new Promise(r => setTimeout(r, 4000));
     await page.screenshot({path: pathScreenshotsTest+ `./${version}_7revokedInvitation.png`})
     //Finalizar la prueba
     console.log('OK Scenario: Revokes invitation');
