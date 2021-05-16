@@ -3,5 +3,5 @@
   "user": "admin@admin.com",
   "password": "abcde12345",
   "version":"v2",
-  "nameScreenPath":"screens_playwright"
+  "nameScreenPath":"playwright_screenshots"
 }
