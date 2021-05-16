@@ -35,7 +35,7 @@ describe('Launch Tag tests', () => {
         const newTag = new NewTag(page);
         const selectedTag = new SelectTag(page);
 
-        let nameTag = "Original Slug Title Tag"
+        let nameTag = "Original_Slug_Title_Tag"
         let descriptionTag = `This is  the Description of ${nameTag}`
         let nameSlugTag= 'Diferent Slug Name'
         

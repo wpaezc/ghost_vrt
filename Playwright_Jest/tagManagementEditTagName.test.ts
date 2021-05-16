@@ -34,7 +34,7 @@ describe('Launch Tag tests', () => {
         const newTag = new NewTag(page);
         const selectedTag = new SelectTag(page);
 
-        let nameTag = "Original Title Tag"
+        let nameTag = "Original_Title_Tag"
         let newNameTag="Modify Title Tag"
         let descriptionTag = `This is  the Description of ${nameTag}`
         
