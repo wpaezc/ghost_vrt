@@ -2,6 +2,6 @@
   "ghostUrl": "http://localhost:2368",
   "user": "admin@admin.com",
   "password": "abcde12345",
-  "version":"v2",
-  "nameScreenPath":"screens_playwright"
+  "version":"v1",
+  "nameScreenPath":"playwright_screenshots"
 }

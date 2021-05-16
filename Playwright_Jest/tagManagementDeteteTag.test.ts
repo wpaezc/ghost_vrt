@@ -10,7 +10,7 @@ const nameScreenPath=config.nameScreenPath
 
 
 
-const titleTest = "detete-tag.test"
+const titleTest = "tagManagementDeteteTag"
 const pathScreenshotsTest =`./${nameScreenPath}/${titleTest}/`
 
 const ghostUrl = config.ghostUrl
@@ -35,7 +35,7 @@ describe('Launch Tag tests', () => {
         const newTag = new NewTag(page);
         const selectedTag = new SelectTag(page);
 
-        let nameTag = "To Delete Title Tag"
+        let nameTag = "To_Delete_Title_Tag"
         let descriptionTag = `This is  the Description of ${nameTag}`
         
         //Abrir la URL a probar en la página singin y dirigirse a Tag

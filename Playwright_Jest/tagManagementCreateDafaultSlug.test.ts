@@ -3,13 +3,19 @@ import { chromium } from "playwright";
 import {LoginPage} from './loginPage'
 import { NewTag } from "./newTag";
 
-const titleTest = "create-tag-diferentSlug"
+var assert = require('assert');
 const config = require('../playwright_properties.json');
 
-const nameScreenPath=config.nameScreenPath
-const pathScreenshotsTest =`./${nameScreenPath}/${titleTest}/`
 const version= `${config.version}_`
+const nameScreenPath=config.nameScreenPath
 
+
+
+
+
+
+const titleTest = "tagManagementCreateDafaultSlug"
+const pathScreenshotsTest =`./${nameScreenPath}/${titleTest}/`
 
 const ghostUrl = config.ghostUrl
 const userEmail = config.user
@@ -17,11 +23,9 @@ const userPassword = config.password
 const url = `${ghostUrl}/ghost/#/signin`;
 
 describe('Launch Tag tests', () => {
-
-    test('Crea tag con Diferent Slug Tag', async () => {
+    test('Crea tag con default tag', async () => {
 
         //Contenido de la prueba
-        
         //Creación del objeto browser, el contexto del mismo y el objeto page para manejar la página
         const browser = await chromium.launch({
         })
@@ -32,9 +36,8 @@ describe('Launch Tag tests', () => {
         const loginPage = new LoginPage(page);
         const newTag = new NewTag(page);
 
-        let nameTag = "Example name Tag 2"
-        let descriptionTag = `this is an example name description 2 `
-        let nameSlugTag= 'Diferent Slug Name'
+        let nameTag = "Example name Tag 1"
+        let descriptionTag = `this is an example name description 1 `
         
         //Abrir la URL a probar en la página singin y dirigirse a Tag
         await page.goto(url);
@@ -49,7 +52,6 @@ describe('Launch Tag tests', () => {
         await new Promise(r => setTimeout(r, 3000));
         await page.screenshot({path: pathScreenshotsTest+`./${version}2_goToTag.png`});
         await newTag.fillNameTag(nameTag);
-        await newTag.fillNameSlug(nameSlugTag);
         await newTag.fillNameDescription(descriptionTag);
         await newTag.clickSaveTag()
         await new Promise(r => setTimeout(r, 3000));
@@ -58,7 +60,6 @@ describe('Launch Tag tests', () => {
         //Verification 
         await page.click("text=Tags");
         let feedback = await page.$(`text=${nameTag}`);
-        let feedbackSlug = await page.$(`text='example-name-tag-2diferent-slug-name'`) 
         
         await new Promise(r => setTimeout(r, 3000));
         await page.screenshot({path: pathScreenshotsTest+`./${version}4_seeNewTag.png`});

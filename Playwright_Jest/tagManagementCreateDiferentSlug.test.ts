@@ -2,16 +2,14 @@ import { chromium } from "playwright";
 
 import {LoginPage} from './loginPage'
 import { NewTag } from "./newTag";
-import { SelectTag } from './selectTag';
 
+const titleTest = "tagManagementCreateDiferentSlug"
 const config = require('../playwright_properties.json');
-const version= `${config.version}_`
+
 const nameScreenPath=config.nameScreenPath
-
-
-
-const titleTest = "edit-slug-name.test"
 const pathScreenshotsTest =`./${nameScreenPath}/${titleTest}/`
+const version= `${config.version}_`
+
 
 const ghostUrl = config.ghostUrl
 const userEmail = config.user
@@ -20,7 +18,7 @@ const url = `${ghostUrl}/ghost/#/signin`;
 
 describe('Launch Tag tests', () => {
 
-    test('Edit Title Tag', async () => {
+    test('Crea tag con Diferent Slug Tag', async () => {
 
         //Contenido de la prueba
         
@@ -33,10 +31,9 @@ describe('Launch Tag tests', () => {
         
         const loginPage = new LoginPage(page);
         const newTag = new NewTag(page);
-        const selectedTag = new SelectTag(page);
 
-        let nameTag = "Original Slug Title Tag"
-        let descriptionTag = `This is  the Description of ${nameTag}`
+        let nameTag = "Example name Tag 2"
+        let descriptionTag = `this is an example name description 2 `
         let nameSlugTag= 'Diferent Slug Name'
         
         //Abrir la URL a probar en la página singin y dirigirse a Tag
@@ -47,37 +44,26 @@ describe('Launch Tag tests', () => {
         await page.click("text=Tags");
         
         //Interactuar con la aplicación web: Crear nuevo Tag
+
         await newTag.clickNewTag();
         await new Promise(r => setTimeout(r, 3000));
-        await page.screenshot({path: pathScreenshotsTest+`./${version}2_goToCreateTag.png`});
+        await page.screenshot({path: pathScreenshotsTest+`./${version}2_goToTag.png`});
         await newTag.fillNameTag(nameTag);
+        await newTag.fillNameSlug(nameSlugTag);
         await newTag.fillNameDescription(descriptionTag);
-        await newTag.clickSaveTag();
-        await new Promise(r => setTimeout(r, 4000));
-        await page.screenshot({path: pathScreenshotsTest+`./${version}3_See_Slug_${nameTag}.png`})
-       
+        await newTag.clickSaveTag()
+        await new Promise(r => setTimeout(r, 3000));
+        await page.screenshot({path: pathScreenshotsTest+`./${version}3_saveFillTag.png`});
         
-        //Edit Slug Tag
-        await selectedTag.clickTag(nameTag);
-
-        await selectedTag.deleteSlugTag();
-        await new Promise(r => setTimeout(r, 3000));
-        await selectedTag.fillSlugTag(nameSlugTag);
-        await new Promise(r => setTimeout(r, 3000));
-        await page.screenshot({path: pathScreenshotsTest+`./${version}4_New_slug_${nameTag}.png`})
-        await selectedTag.clickSaveTag();
-        await new Promise(r => setTimeout(r, 3000));
-    
-
         //Verification 
         await page.click("text=Tags");
-        let feedback = await page.$(`text=${nameSlugTag}`);
+        let feedback = await page.$(`text=${nameTag}`);
+        let feedbackSlug = await page.$(`text='example-name-tag-2diferent-slug-name'`) 
         
         await new Promise(r => setTimeout(r, 3000));
-        await page.screenshot({path: pathScreenshotsTest+`./${version}5_seeNewTag.png`});
+        await page.screenshot({path: pathScreenshotsTest+`./${version}4_seeNewTag.png`});
 
         //Finalizar la prueba
         await browser.close();
     }, 90000)
-
 })
