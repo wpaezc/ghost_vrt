@@ -4,8 +4,12 @@ import {LoginPage} from './loginPage'
 import { NewTag } from "./newTag";
 
 const titleTest = "create-tag-diferentSlug"
-const pathScreenshotsTest =`./screensTest/${titleTest}/`
 const config = require('../playwright_properties.json');
+
+const nameScreenPath=config.nameScreenPath
+const pathScreenshotsTest =`./${nameScreenPath}/${titleTest}/`
+const version= `${config.version}_`
+
 
 const ghostUrl = config.ghostUrl
 const userEmail = config.user
@@ -35,7 +39,7 @@ describe('Launch Tag tests', () => {
         //Abrir la URL a probar en la página singin y dirigirse a Tag
         await page.goto(url);
         await loginPage.login(userEmail,userPassword);
-        await page.screenshot({path: pathScreenshotsTest+'./1_login.png'});
+        await page.screenshot({path: pathScreenshotsTest+`./${version}1_login.png`});
         await new Promise(r => setTimeout(r, 2000));
         await page.click("text=Tags");
         
@@ -43,13 +47,13 @@ describe('Launch Tag tests', () => {
 
         await newTag.clickNewTag();
         await new Promise(r => setTimeout(r, 3000));
-        await page.screenshot({path: pathScreenshotsTest+'./2_goToTag.png'});
+        await page.screenshot({path: pathScreenshotsTest+`./${version}2_goToTag.png`});
         await newTag.fillNameTag(nameTag);
         await newTag.fillNameSlug(nameSlugTag);
         await newTag.fillNameDescription(descriptionTag);
         await newTag.clickSaveTag()
         await new Promise(r => setTimeout(r, 3000));
-        await page.screenshot({path: pathScreenshotsTest+'./3_saveFillTag.png'});
+        await page.screenshot({path: pathScreenshotsTest+`./${version}3_saveFillTag.png`});
         
         //Verification 
         await page.click("text=Tags");
@@ -57,7 +61,7 @@ describe('Launch Tag tests', () => {
         let feedbackSlug = await page.$(`text='example-name-tag-2diferent-slug-name'`) 
         
         await new Promise(r => setTimeout(r, 3000));
-        await page.screenshot({path: pathScreenshotsTest+'./4_seeNewTag.png'});
+        await page.screenshot({path: pathScreenshotsTest+`./${version}4_seeNewTag.png`});
 
         //Finalizar la prueba
         await browser.close();

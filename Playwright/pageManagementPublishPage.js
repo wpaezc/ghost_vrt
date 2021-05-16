@@ -8,9 +8,11 @@ const config = require('../playwright_properties.json');
 const ghostUrl = config.ghostUrl
 const user = config.user
 const password = config.password
+const version= `${config.version}_`
+const nameScreenPath=config.nameScreenPath
 
 const titleTest = "pageManagementPublishPage"
-const pathScreenshotsTest =`./screensTest/${titleTest}/`
+const pathScreenshotsTest =`./${nameScreenPath}/${titleTest}/`
 
 const url = `${ghostUrl}/ghost/#/signin`;
 console.log('Run tests for PAGE MANAGEMENT');
@@ -35,27 +37,27 @@ console.log('Run tests for PAGE MANAGEMENT');
     await loginPage.enter_ghost()
     //Abrir la URL a probar en la página y cargar el proyecto en una SPA
     await navigator.clickOnSidebar('pages')
-    await page.screenshot({path: pathScreenshotsTest+ './visit_pages.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_1visit_pages.png`})
     // Crear nueva page
     await navigator.clickOnNewEditor('page')
-    await page.screenshot({path: pathScreenshotsTest+ './new_page.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_2new_page.png`})
     // editar titulo del page
     await editor.fillTitle("Publish on editor")
-    await page.screenshot({path: pathScreenshotsTest+ './editing.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_3editing.png`})
  
     await editor.triggerSave()
     await editor.openPublishPopup()
-    await page.screenshot({path: pathScreenshotsTest+ './open_publish_popup.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_4open_publish_popup.png`})
     await editor.publish()
-    await page.screenshot({path: pathScreenshotsTest+ './finish_publishing.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_5finish_publishing.png`})
 
     // // salir de la post
     await navigator.saveAndFinishEditing('pages')
-    await page.screenshot({path: pathScreenshotsTest+ './returning_and_saving.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_6returning_and_saving.png`})
 
     await page.click('section .ember-view');
     await new Promise(r => setTimeout(r, 1000));
-    await page.screenshot({path: pathScreenshotsTest+ './end.png'})
+    await page.screenshot({path: pathScreenshotsTest+ `./${version}_7end.png`})
 
     console.log('Ok Scenario: Publish page')
     await browser.close();

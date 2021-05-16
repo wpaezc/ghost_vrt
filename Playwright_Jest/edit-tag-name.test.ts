@@ -5,10 +5,13 @@ import { NewTag } from "./newTag";
 import { SelectTag } from './selectTag';
 
 const config = require('../playwright_properties.json');
+const version= `${config.version}_`
+const nameScreenPath=config.nameScreenPath
+
 
 
 const titleTest = "edit-tag-name.test"
-const pathScreenshotsTest =`./screensTest/${titleTest}/`
+const pathScreenshotsTest =`./${nameScreenPath}/${titleTest}/`
 
 const ghostUrl = config.ghostUrl
 const userEmail = config.user
@@ -38,19 +41,19 @@ describe('Launch Tag tests', () => {
         //Abrir la URL a probar en la página singin y dirigirse a Tag
         await page.goto(url);
         await loginPage.login(userEmail,userPassword);
-        await page.screenshot({path: pathScreenshotsTest+'./1_login.png'});
+        await page.screenshot({path: pathScreenshotsTest+`./${version}1_login.png`});
         await new Promise(r => setTimeout(r, 2000));
         await page.click("text=Tags");
         
         //Interactuar con la aplicación web: Crear nuevo Tag
         await newTag.clickNewTag();
         await new Promise(r => setTimeout(r, 3000));
-        await page.screenshot({path: pathScreenshotsTest+'./2_goToCreateTag.png'});
+        await page.screenshot({path: pathScreenshotsTest+`./${version}2_goToCreateTag.png`});
         await newTag.fillNameTag(nameTag);
         await newTag.fillNameDescription(descriptionTag);
         await newTag.clickSaveTag();
         await new Promise(r => setTimeout(r, 3000));
-        await page.screenshot({path: pathScreenshotsTest+`./3_See_${nameTag}.png`})
+        await page.screenshot({path: pathScreenshotsTest+`./${version}3_See_${nameTag}.png`})
        
         
         //Edit Name Tag
@@ -60,7 +63,7 @@ describe('Launch Tag tests', () => {
         await new Promise(r => setTimeout(r, 3000));
         await selectedTag.fillNameTag(newNameTag);
         await new Promise(r => setTimeout(r, 3000));
-        await page.screenshot({path: pathScreenshotsTest+`./4_New_title_${newNameTag}.png`})
+        await page.screenshot({path: pathScreenshotsTest+`./${version}4_New_title_${newNameTag}.png`})
         await selectedTag.clickSaveTag();
         await new Promise(r => setTimeout(r, 3000));
     
@@ -70,7 +73,7 @@ describe('Launch Tag tests', () => {
         let feedback = await page.$(`text=${newNameTag}`);
         
         await new Promise(r => setTimeout(r, 3000));
-        await page.screenshot({path: pathScreenshotsTest+'./5_seeNewTag.png'});
+        await page.screenshot({path: pathScreenshotsTest+`./${version}5_seeNewTag.png`});
 
         //Finalizar la prueba
         await browser.close();
