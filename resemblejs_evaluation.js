@@ -64,10 +64,9 @@ async function executeTest(){
       }
     }
 
-
-    let name_split = scenario.split("_")
-    let feature_name = name_split.slice(0,2).join(" ").toLowerCase()
-    let scenario_name = name_split.slice(2,100).join(" ").toLowerCase()
+    let name_split = scenario.split("Management")
+    let feature_name = `${name_split[0]} Management`
+    let scenario_name = name_split[1]
 
     fs.writeFileSync(
       `./resemblejs_reports/${scenario}/report.html`,
