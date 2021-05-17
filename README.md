@@ -13,7 +13,7 @@
 El reporte se encuentra en la WIKI del proyecto: [Link](https://github.com/wpaezc/ghost_regresion/wiki/Evaluaci%C3%B3n-de-Herramienta)
 
 ## 3. Resultados finales
-Hemos enfocado las pruebas de regresión con la herramienta _resembleJS_, y para terminos de evaluar la herramienta BackstopJs solo hemos realizado un reporte para un scenario.
+Hemos enfocado las pruebas de regresión con la herramienta _resembleJS_, y para terminos de evaluar la herramienta BackstopJs solo hemos realizado un reporte con esta libreria.
 
 Los screenshots para ambas versiones de Ghost se encuentra en las carpetas **_./kraken_screeenshots_** y **_./playwright_screenshots**. Dentro de estos, cada escenario bajo prueba tiene su propia carpeta, ahi se ecuentran los screenshots para cada paso ejecutado con la versión v1(3.3.0) y v2(3.42.5).
 
