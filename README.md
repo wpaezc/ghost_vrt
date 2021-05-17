@@ -12,7 +12,11 @@
 
 El reporte se encuentra en la WIKI del proyecto: [Link](https://github.com/wpaezc/ghost_regresion/wiki/Evaluaci%C3%B3n-de-Herramienta)
 
-## 3. Resultados finales
+## 2. Incidencias reportados
+
+Las incidencias se encuentran registradas en Trello: [Link](https://trello.com/b/e5H7xPH5/incidencias-ghost-3425)
+
+## 4. Resultados finales
 Hemos enfocado las 10 pruebas de regresión con la herramienta _resembleJS_, y para terminos de evaluar la herramienta _BackstopJs_ solo hemos realizado 1 prueba de regresión con esta libreria por la dificultad para configurar los escenarios.
 
 Los screenshots para ambas versiones de Ghost se encuentra en las carpetas **_./kraken_screeenshots_** y **_./playwright_screenshots**. Dentro de estos, cada escenario bajo prueba tiene su propia carpeta, ahi se ecuentran los screenshots para cada paso ejecutado con la versión v1(3.3.0) y v2(3.42.5).
@@ -34,6 +38,7 @@ Los 10 escenarios seleccionados para las pruebas con _resembleJS_ son los siguie
 |**Tag Management:** Change tag meta data|tag_management_change_tag_meta_data|Kraken|
 |**Tag Management:** Delete tag|tag_management_delete_tag|Kraken|
 
+
 El resutados del test de regresión con BackstopJS se encuentra en el archivo **./backstop_data/html_report/index.html**. 
 El escenario seleccionado para la prueba con BackstopJs es:
 
@@ -44,11 +49,11 @@ El escenario seleccionado para la prueba con BackstopJs es:
 
 A continuación se describe los pasos para llegar a estos resultados. Se recomienda tener para ambas versiones una base de datos limpia con solo un usuario administrador y su password.
 
-## 4. Pasos para tomar screenshots en la versión Ghost 3.3.0
+## 5. Pasos para tomar screenshots en la versión Ghost 3.3.0
 Clonar el repositorio y cambiar el código al tag v1: ```git checkout tags/v1```
 La version de node recomendada es la ```12.20.1```. 
 
-### 4.1 Tomar screenshots con Playwright
+### 5.1 Tomar screenshots con Playwright
 Dar un ```npm install``` y cambiar los siguientes valores en el archivo de configuración _playwright_properties.json_ en caso que tenga otro ghostUrl, user o password. Es importante mantener en este archivo los valores de "version" v1 y "nameScreenPath" para generar correctamente los nombres del screenshot.
 
 ```json
@@ -84,7 +89,7 @@ Para ejecutar ejecutar los 5 escenarios faltantes ***playwright-jest*** usar el 
 
 Al final se crearán 20 carpetas en el folder **_./playwright_screenshots_**. Los screenshots de los 20 escenarios serán creados en el siguiente formato **_./playwright_screenshots/featureScenario/v1_nombre_del_step.png**
 
-### 4.2 Tomar screenshots con Kraken
+### 5.2 Tomar screenshots con Kraken
 En caso no tenga kraken-mobile instalado, se recomienda instalar la version de ruby ```2.6.7```, ejecutar un ```gem install bundler``` y luego ```bundle install```  
 
 Si ya tiene instalado kraken-mobile abrir el archivo ```kraken_properties.json``` y configuar los valores de _GHOST_URL_, _USER_ o _PASSWORD_ en caso tenga otros valores. Es importante mantener en este archivo el valor "version" v1
@@ -103,11 +108,11 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 
 Al final se crearán 20 carpetas en el folder **_./kraken_screenshots_**. Los screenshots de los 20 escenarios serán creados en el siguiente formato **_./kraken_screenshots/feature_scenario/v1_nombre_del_step.png**
 
-## 5. Pasos para tomar screenshots en la versión Ghost 3.42.5
+## 6. Pasos para tomar screenshots en la versión Ghost 3.42.5
 Clonar el repositorio y cambiar el código a master: ```git checkout master```
 La version de node recomendada es la ```12.20.1```. 
 
-### 5.1 Tomar screenshots con Playwright
+### 6.1 Tomar screenshots con Playwright
 Dar un ```npm install``` y cambiar los siguientes valores en el archivo de configuración _playwright_properties.json_ en caso que tenga otro ghostUrl, user o password. Es importante mantener en este archivo los valores de "version" v2 y "nameScreenPath" para generar correctamente los nombres del screenshot.
 
 ```json
@@ -143,7 +148,7 @@ Para ejecutar ejecutar los 5 escenarios faltantes ***playwright-jest*** usar el 
 
 Al final se crearán 20 carpetas en el folder **_./playwright_screenshots_**. Los screenshots de los 20 escenarios serán creados en el siguiente formato **_./playwright_screenshots/featureScenario/v2_nombre_del_step.png**
 
-### 5.2 Tomar screenshots con Kraken
+### 6.2 Tomar screenshots con Kraken
 En caso no tenga kraken-mobile instalado, se recomienda instalar la version de ruby ```2.6.7```, ejecutar un ```gem install bundler``` y luego ```bundle install```  
 
 Si ya tiene instalado kraken-mobile abrir el archivo ```kraken_properties.json``` y configuar los valores de _GHOST_URL_, _USER_ o _PASSWORD_ en caso tenga otros valores. Es importante mantener en este archivo el valor "version" v2
@@ -162,7 +167,7 @@ Se ejecutan las pruebas ***kraken*** con el comando: ```kraken-mobile run --prop
 
 Al final se crearán 20 carpetas en el folder **_./kraken_screenshots_**. Los screenshots de los 20 escenarios serán creados en el siguiente formato **_./kraken_screenshots/feature_scenario/v2_nombre_del_step.png**
 
-## 5. Generar reportes con ResembleJS
+## 7. Generar reportes con ResembleJS
 Se debe encontrar en la rama ```master``` y tener todo instalado ```npm install```
 
 Para configurar los escenarios bajo pruebas se debe usar el archivo **resemblejs_config.json** y agregar/cambiar/quitar en el key "playwright_scenarios" las carpetas donde se encuentran los screenshots de las funcionalidades de playwright(carpeta playwright_screenshots); y agregar/cambiar/quitar en el key "kraken_scenarios" las carpetas donde se encuentran los screenshots de las funcionalidades de kraken(carpeta kraken_screenshots). Se puede poner los 40 scenarios.
@@ -206,11 +211,11 @@ Se ejecutan las pruebas de regresion con ***resembleJS*** con el comando: ```nod
 
 Luego verificar la carpeta _./resemblejs_reports_ donde se encontraran por cada escenario una carpeta, y dentro de ellas un archivo **index.html** donde puede visualizar el reporte.
 
-## 6. Generar reportes con backstopJS
+## 8. Generar reportes con backstopJS
 
 Tan solo se necesita tener instalado la herramienta ```npm install -g backstopjs``` y dar un ```backstop test``` para ver el resultado HTML. El archivo de configuracion para esta herramienta donde se pueden ver los escenarios creados es _./backstop.json_
 
-## 7. Todas las funcionalidades bajo pruebas y escenarios
+## 9. Todas las funcionalidades bajo pruebas y escenarios
 
 - Escenarios de funcionalidad **Manejo de posts**
 
