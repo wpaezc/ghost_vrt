@@ -12,7 +12,7 @@
 
 El reporte se encuentra en la WIKI del proyecto: [Link](https://github.com/wpaezc/ghost_regresion/wiki/Evaluaci%C3%B3n-de-Herramienta)
 
-## 3. Incidencias reportados
+## 3. Incidencias reportadas
 
 Las incidencias se encuentran registradas en Trello: [Link](https://trello.com/b/e5H7xPH5/incidencias-ghost-3425)
 
