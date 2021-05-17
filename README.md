@@ -13,13 +13,13 @@
 El reporte se encuentra en la WIKI del proyecto: [Link](https://github.com/wpaezc/ghost_regresion/wiki/Evaluaci%C3%B3n-de-Herramienta)
 
 ## 3. Resultados finales
-Hemos enfocado las pruebas de regresión con la herramienta _resembleJS_, y para terminos de evaluar la herramienta BackstopJs solo hemos realizado un reporte con esta libreria.
+Hemos enfocado las 10 pruebas de regresión con la herramienta _resembleJS_, y para terminos de evaluar la herramienta _BackstopJs_ solo hemos realizado 1 prueba de regresión con esta libreria por la dificultad para configurar los escenarios.
 
 Los screenshots para ambas versiones de Ghost se encuentra en las carpetas **_./kraken_screeenshots_** y **_./playwright_screenshots**. Dentro de estos, cada escenario bajo prueba tiene su propia carpeta, ahi se ecuentran los screenshots para cada paso ejecutado con la versión v1(3.3.0) y v2(3.42.5).
 
 Los resutados de los tests de regresión con ResembleJS se encuentra en la carpeta **./resemblejs_reports**. Cada escenario bajo prueba tiene su propia carpeta, los escenarios de Kraken tienen nombres son subguión(_) y los del playwright con camelCase. En total se evaluarón 10 escenarios, cada uno cuenta con un **_index.html_** donde se puede ver el resultado final.
 
-Los 10 escenarios seleccionados para pruebas con _resembleJS_ son los siguientes:
+Los 10 escenarios seleccionados para las pruebas con _resembleJS_ son los siguientes:
 
 |Nombre del scenario| Carpeta | Herramienta para screenshots |
 |-----|-----|-----|
@@ -34,6 +34,12 @@ Los 10 escenarios seleccionados para pruebas con _resembleJS_ son los siguientes
 |**Tag Management:** Change tag meta data|tag_management_change_tag_meta_data|Kraken|
 |**Tag Management:** Delete tag|tag_management_delete_tag|Kraken|
 
+El resutados del test de regresión con BackstopJS se encuentra en el archivo **./backstop_data/html_report/index.html**. 
+El escenario seleccionado para la prueba con BackstopJs es:
+
+|Nombre del scenario| Carpeta | Herramienta para screenshots |
+|-----|-----|-----|
+|**User management:** Change user data|userManagementChangeUserData|Playwright|
 
 
 A continuación se describe los pasos para llegar a estos resultados. Se recomienda tener para ambas versiones una base de datos limpia con solo un usuario administrador y su password.
@@ -200,7 +206,11 @@ Se ejecutan las pruebas de regresion con ***resembleJS*** con el comando: ```nod
 
 Luego verificar la carpeta _./resemblejs_reports_ donde se encontraran por cada escenario una carpeta, y dentro de ellas un archivo **index.html** donde puede visualizar el reporte.
 
-## 6. Todas las funcionalidades bajo pruebas y escenarios
+## 6. Generar reportes con backstopJS
+
+Tan solo se necesita tener instalado la herramienta ```npm install -g backstopjs``` y dar un ```backstop test``` para ver el resultado HTML. El archivo de configuracion para esta herramienta donde se pueden ver los escenarios creados es _./backstop.json_
+
+## 7. Todas las funcionalidades bajo pruebas y escenarios
 
 - Escenarios de funcionalidad **Manejo de posts**
 
