@@ -8,17 +8,18 @@
 |Wenceslao Crhistopher Paez Chavez|w.paezc@uniandes.edu.co|
 
 
-## 2. Pros y contras de la herramienta utilizada (ResembleJs)
+## 2. Pros y contras de la herramientas utilizadas
 
 El reporte se encuentra en la WIKI del proyecto: [Link](https://github.com/wpaezc/ghost_regresion/wiki/Evaluaci%C3%B3n-de-Herramienta)
 
 ## 3. Resultados finales
+Hemos enfocado las pruebas de regresión con la herramienta _resembleJS_, y para terminos de evaluar la herramienta BackstopJs solo hemos realizado un reporte para un scenario.
 
 Los screenshots para ambas versiones de Ghost se encuentra en las carpetas **_./kraken_screeenshots_** y **_./playwright_screenshots**. Dentro de estos, cada escenario bajo prueba tiene su propia carpeta, ahi se ecuentran los screenshots para cada paso ejecutado con la versión v1(3.3.0) y v2(3.42.5).
 
 Los resutados de los tests de regresión con ResembleJS se encuentra en la carpeta **./resemblejs_reports**. Cada escenario bajo prueba tiene su propia carpeta, los escenarios de Kraken tienen nombres son subguión(_) y los del playwright con camelCase. En total se evaluarón 10 escenarios, cada uno cuenta con un **_index.html_** donde se puede ver el resultado final.
 
-Los 10 escenarios seleccionados para la evalución son los siguientes:
+Los 10 escenarios seleccionados para pruebas con _resembleJS_ son los siguientes:
 
 |Nombre del scenario| Carpeta | Herramienta para screenshots |
 |-----|-----|-----|
@@ -32,6 +33,8 @@ Los 10 escenarios seleccionados para la evalución son los siguientes:
 |**Post Management:** Create page and publish on future|post_management_create_post_published_on_future|Kraken|
 |**Tag Management:** Change tag meta data|tag_management_change_tag_meta_data|Kraken|
 |**Tag Management:** Delete tag|tag_management_delete_tag|Kraken|
+
+
 
 A continuación se describe los pasos para llegar a estos resultados. Se recomienda tener para ambas versiones una base de datos limpia con solo un usuario administrador y su password.
 
