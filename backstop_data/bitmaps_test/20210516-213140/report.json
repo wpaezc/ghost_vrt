@@ -1,0 +1,96 @@
+{
+  "testSuite": "BackstopJS",
+  "tests": [
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/changeUserData_loginSuccess_0__0_default.png",
+        "test": "../bitmaps_test/20210516-213140/changeUserData_loginSuccess_0__0_default.png",
+        "selector": "",
+        "fileName": "changeUserData_loginSuccess_0__0_default.png",
+        "label": "loginSuccess",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 1,
+        "url": "../ghost_regresion/playwright_screenshots/userManagementChangeUserData/v2__1successfulLogin.png",
+        "referenceUrl": "../ghost_regresion/playwright_screenshots/userManagementChangeUserData/v1__1successfulLogin.png",
+        "expect": 0,
+        "viewportLabel": "default",
+        "engineErrorMsg": "net::ERR_FILE_NOT_FOUND at file:///home/wcpaez/Studies/Ciclo2/Pruebas/ghost_regresion/playwright_screenshots/userManagementChangeUserData/v2__1successfulLogin.png",
+        "error": "Reference file not found /home/wcpaez/Studies/Ciclo2/Pruebas/e2e_tests/backstop_data/bitmaps_reference/changeUserData_loginSuccess_0__0_default.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/changeUserData_displayStaff_0__0_default.png",
+        "test": "../bitmaps_test/20210516-213140/changeUserData_displayStaff_0__0_default.png",
+        "selector": "",
+        "fileName": "changeUserData_displayStaff_0__0_default.png",
+        "label": "displayStaff",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 2,
+        "url": "../ghost_regresion/playwright_screenshots/userManagementChangeUserData/v2__2displayStaff.png",
+        "referenceUrl": "../ghost_regresion/playwright_screenshots/userManagementChangeUserData/v1__2displayStaff.png",
+        "expect": 0,
+        "viewportLabel": "default",
+        "engineErrorMsg": "net::ERR_FILE_NOT_FOUND at file:///home/wcpaez/Studies/Ciclo2/Pruebas/ghost_regresion/playwright_screenshots/userManagementChangeUserData/v2__2displayStaff.png",
+        "error": "Reference file not found /home/wcpaez/Studies/Ciclo2/Pruebas/e2e_tests/backstop_data/bitmaps_reference/changeUserData_displayStaff_0__0_default.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/changeUserData_ownerDetail_0__0_default.png",
+        "test": "../bitmaps_test/20210516-213140/changeUserData_ownerDetail_0__0_default.png",
+        "selector": "",
+        "fileName": "changeUserData_ownerDetail_0__0_default.png",
+        "label": "ownerDetail",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 2,
+        "url": "../ghost_regresion/playwright_screenshots/userManagementChangeUserData/v2__3originalOwnerDetail.png",
+        "referenceUrl": "../ghost_regresion/playwright_screenshots/userManagementChangeUserData/v1__3originalOwnerDetail.png",
+        "expect": 0,
+        "viewportLabel": "default",
+        "engineErrorMsg": "net::ERR_FILE_NOT_FOUND at file:///home/wcpaez/Studies/Ciclo2/Pruebas/ghost_regresion/playwright_screenshots/userManagementChangeUserData/v2__3originalOwnerDetail.png",
+        "error": "Reference file not found /home/wcpaez/Studies/Ciclo2/Pruebas/e2e_tests/backstop_data/bitmaps_reference/changeUserData_ownerDetail_0__0_default.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/changeUserData_modifiedOwnerDetail_0__0_default.png",
+        "test": "../bitmaps_test/20210516-213140/changeUserData_modifiedOwnerDetail_0__0_default.png",
+        "selector": "",
+        "fileName": "changeUserData_modifiedOwnerDetail_0__0_default.png",
+        "label": "modifiedOwnerDetail",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 2,
+        "url": "../ghost_regresion/playwright_screenshots/userManagementChangeUserData/v2__4modifiedOwnerDetail.png",
+        "referenceUrl": "../ghost_regresion/playwright_screenshots/userManagementChangeUserData/v1__4modifiedOwnerDetail.png",
+        "expect": 0,
+        "viewportLabel": "default",
+        "engineErrorMsg": "net::ERR_FILE_NOT_FOUND at file:///home/wcpaez/Studies/Ciclo2/Pruebas/ghost_regresion/playwright_screenshots/userManagementChangeUserData/v2__4modifiedOwnerDetail.png",
+        "error": "Reference file not found /home/wcpaez/Studies/Ciclo2/Pruebas/e2e_tests/backstop_data/bitmaps_reference/changeUserData_modifiedOwnerDetail_0__0_default.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/changeUserData_savedOwnerDetail_0__0_default.png",
+        "test": "../bitmaps_test/20210516-213140/changeUserData_savedOwnerDetail_0__0_default.png",
+        "selector": "",
+        "fileName": "changeUserData_savedOwnerDetail_0__0_default.png",
+        "label": "savedOwnerDetail",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 2,
+        "url": "../ghost_regresion/playwright_screenshots/userManagementChangeUserData/v2__5savedOwnerDetail.png",
+        "referenceUrl": "../ghost_regresion/playwright_screenshots/userManagementChangeUserData/v1__5savedOwnerDetail.png",
+        "expect": 0,
+        "viewportLabel": "default",
+        "engineErrorMsg": "net::ERR_FILE_NOT_FOUND at file:///home/wcpaez/Studies/Ciclo2/Pruebas/ghost_regresion/playwright_screenshots/userManagementChangeUserData/v2__5savedOwnerDetail.png",
+        "error": "Reference file not found /home/wcpaez/Studies/Ciclo2/Pruebas/e2e_tests/backstop_data/bitmaps_reference/changeUserData_savedOwnerDetail_0__0_default.png"
+      },
+      "status": "fail"
+    }
+  ],
+  "id": "changeUserData"
+}
